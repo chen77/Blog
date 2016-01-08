@@ -49,16 +49,19 @@
 
 
 
-<meta name="description" content="第二次搭建这个博客，对于很多操作又熟悉了不少，从照搬别人的教程到现在比较知道点其所以然，还是觉得有必要把这些资源步骤整理到一起，以后需要的时候也好再从这个节点展开进阶。">
+<meta name="description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo初建">
-<meta property="og:url" content="http://yoursite.com/2016/01/08/Hexo初建/index.html">
+<meta property="og:title" content="Gulp任务自动管理工具的基本使用">
+<meta property="og:url" content="http://yoursite.com/2016/01/08/Gulp任务自动管理工具的基本使用/index.html">
 <meta property="og:site_name" content="chen7's Blog">
-<meta property="og:description" content="第二次搭建这个博客，对于很多操作又熟悉了不少，从照搬别人的教程到现在比较知道点其所以然，还是觉得有必要把这些资源步骤整理到一起，以后需要的时候也好再从这个节点展开进阶。">
-<meta property="og:updated_time" content="2016-01-08T01:38:29.864Z">
+<meta property="og:description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
+<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png">
+<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png">
+<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp-3.png">
+<meta property="og:updated_time" content="2016-01-08T07:13:03.836Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo初建">
-<meta name="twitter:description" content="第二次搭建这个博客，对于很多操作又熟悉了不少，从照搬别人的教程到现在比较知道点其所以然，还是觉得有必要把这些资源步骤整理到一起，以后需要的时候也好再从这个节点展开进阶。">
+<meta name="twitter:title" content="Gulp任务自动管理工具的基本使用">
+<meta name="twitter:description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
 
 
 
@@ -70,7 +73,7 @@
   };
 </script>
 
-  <title> Hexo初建 | chen7's Blog </title>
+  <title> Gulp任务自动管理工具的基本使用 | chen7's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -180,7 +183,7 @@
             
             
               
-                Hexo初建
+                Gulp任务自动管理工具的基本使用
               
             
           </h1>
@@ -189,7 +192,7 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-08T09:14:51+08:00" content="2016-01-08">
+            <time itemprop="dateCreated" datetime="2016-01-08T10:39:06+08:00" content="2016-01-08">
               2016-01-08
             </time>
           </span>
@@ -213,18 +216,27 @@
       
 
       
-        <span itemprop="articleBody"><p>第二次搭建这个博客，对于很多操作又熟悉了不少，从照搬别人的教程到现在比较知道点其所以然，还是觉得有必要把这些资源步骤整理到一起，以后需要的时候也好再从这个节点展开进阶。<br><a id="more"></a></p>
-<h2 id="Git_26amp_3BGithub"><a href="#Git_26amp_3BGithub" class="headerlink" title="Git&amp;Github"></a>Git&amp;Github</h2><p>似乎潜心折腾的技术的最后都要混一个圈子叫github，以前看那个界面状态也只是觉得“有点高端啊，英文的呢，混不了呀……” 然而所有高大上的东西不过是从小白到熟悉一个必经的心理历程，现在也还不太熟悉，但是相对于以前的望而却步倒是觉得并没现象中的那么难嘛，真是感恩互联网这个乐于分享的大平台~</p>
-<p>Git入门刷了一个经典教程<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰Git教程</a>只是让我对这个东西不那么陌生了但现在好像要用的话得重新刷一遍这个教程。<br>Github前两天发现一个很有趣非常适合我这种小白看的一个浅显易懂的介绍<a href="https://www.zhihu.com/question/20070065/answer/30521531" target="_blank" rel="external">怎样使用github</a>，真想跟作者当好盆友o(^▽^)o</p>
-<h2 id="u642D_u5EFAHexo_u535A_u5BA2"><a href="#u642D_u5EFAHexo_u535A_u5BA2" class="headerlink" title="搭建Hexo博客"></a>搭建Hexo博客</h2><p>这两次主要都是参考了三篇文章搭建的这个博客，</p>
-<ul>
-<li><a href="http://zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">文章1</a> / <a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">文章2</a> / <a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank" rel="external">文章3</a></li>
-</ul>
-<p>hexo是一款基于Node.js的静态博客框架。<br>然后什么事node.js呢？看个百科去<a href="http://baike.baidu.com/link?url=2o1p731yBfNL0Lg38G6SZgtAyuTg69ypqkt20EgqyhZSy13gRJ1YCu59-nkdCF4TLlLHJxY7lZDi002NikN-2q" target="_blank" rel="external">Node.js</a>反正越来越觉得这些东西真是使着使着才能体会那些概念里说得那些炫酷的东西~</p>
-<p> <strong>1.安装git</strong> <a href="http://git-scm.com/download/" target="_blank" rel="external">Download</a><br> <strong>2.安装node.js</strong> <a href="https://nodejs.org/en/" target="_blank" rel="external">Download</a><br> <strong>3.安装Hexo</strong><br> <strong>4.部署到github上去</strong></p>
-<p> 文章里已经很详细的步骤了，就不再重复写过程了，这里就备份一下。部署设置时遇到的一个问题<a href="https://github.com/hexojs/hexo/issues/1040" target="_blank" rel="external">https://github.com/hexojs/hexo/issues/1040</a><br> 至此就可以查看一个丑丑的博客啦~<br> 接下来就是给博客穿上漂亮的衣服，主题选择啊啥的，这个一般都有主题介绍使用按照主题文档去配置就差不多了。</p>
-<h2 id="u591A_u53F0PC_u95F4_u6587_u7AE0_u540C_u6B65_u95EE_u9898"><a href="#u591A_u53F0PC_u95F4_u6587_u7AE0_u540C_u6B65_u95EE_u9898" class="headerlink" title="多台PC间文章同步问题"></a>多台PC间文章同步问题</h2><p>上次建博客的时候遇到这个问题，后来电脑换了文件也没啦，这个还没操作，家里电脑卡顿了……看了这篇文章利<a href="http://chitanda.me/2015/06/18/hexo-sync-in-multiple-pc/" target="_blank" rel="external">用git解决hexo博客多PC间同步问题</a> 感觉主要还是用传统方法主要把文章md文件备份起来不就好了嘛。</p>
-<p>End。<br>好了，总算是开了个始把第一篇给更了。<br>以后就老老实实的实践“好记性不如烂笔头”这句话吧。</p>
+        <span itemprop="articleBody"><p>前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。<br>这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~<br><a id="more"></a></p>
+<p>##Gulp是什么？<br>gulp是基于Node.js的自动任务运行器。所以安装使用gulp之前需要安装node.js。<br><strong>Gulp到底是做什么的呢？</strong>这是刚开始一直很纠结的问题，一直到昨前天跑通后然后看到一张图片对于基础的用法总结得挺好的，另外雪碧图的拼接也是体现了自动化提高了工作效率。<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png" alt="此处输入图片的描述"></p>
+<p>##安装使用Gulp<br>同样参考三篇入门教程，写得很详细：</p>
+<blockquote>
+<p><a href="http://javascript.ruanyifeng.com/tool/gulp.html" target="_blank" rel="external">Gulp：任务自动管理工具</a> 阮老师的一个教程，以压缩js文件为例比较清晰细节的介绍了gulp的一些基本模块方法，很适合从0到1的操作；<br><a href="http://www.ydcss.com/archives/18" target="_blank" rel="external">gulp详细入门教程</a>这篇文章比较图文并茂详细，包括作者一系列的gulp插件功能使用介绍文章，了解到了插件方面的东西；<br><a href="http://www.w3ctrain.com/2015/12/22/gulp-for-beginners/#more" target="_blank" rel="external">Gulp新手入门教程</a>这篇文章对于gulp工具的了解学习比较全面详细深入了。</p>
+</blockquote>
+<p>####安装Gulp<br><strong>1.这里打开node.js的操作命令界面全局安装Gulp</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>npm install是指定从Node Package Manager（nodejs的包管理器）安装的命令<br>-g表示全局安装，这样你在电脑上任何位置都能只用gulp 命令</p>
+</blockquote>
+<p><strong>2.创建Gulp个人项目</strong><br>建立一个项目文件夹比如就取名叫“project”吧，在这个根目录下创建一个package.json文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>package.json是基于nodejs项目必不可少的配置文件，这个文件保存着这个项目相关信息比如用到的各种依赖（这里主要是插件），<br>package.json是一个普通json文件，所以不能添加任何注释</p>
+</blockquote>
+<p><strong>3.在个人本地项目所在位置安装gulp及相关模块插件（也就是以后每个项目需要自动化构建就要安装一遍）</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev gulp</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>–save：将保存配置信息至package.json（package.json是nodejs项目配置文件）；<br>-dev：保存至package.json的devDependencies节点，不指定-dev将保存至dependencies节点；<br>为什么要保存至package.json？因为node插件包相对来说非常庞大，所以不加入版本管理，将配置信息写入package.json并将其加入版本管理，其他开发者对应下载即可（命令提示符执行npm<br>install，则会根据package.json下载所有需要的包）。</p>
+</blockquote>
+<p>以上，就安装好gulp了，接下来就是给gulp安装插件，不同的插件对应不同的任务功能。<br>这张图很有借鉴意义，干净整洁的项目环境啊~~<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png" alt="此处输入图片的描述"></p>
+<p><strong>4.创建gulp任务，</strong><br>在根目录下创建gulpfile.js文件，它是gulp项目的配置文件，在这个文件里去写task任务，然后命令提示符执行gulp 任务名称就实现了自动化管理操作的事情了。<br>任务配置就去看相关的设置了，这里之前迷糊的地方就是不知道怎么执行gulp任务%&gt;_&lt;%一张图解决吧<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp-3.png" alt="此处输入图片的描述"></p>
+<p>End。<br>总体来说gulp主要就是更多自动化的实现了一些后期部署的代码资源处理，效率确实提高了很多特别是雪碧图的操作这些，<br>这次入门gulp多亏朋友时不时的来追着问“gulp弄得咋样啦~”然后入门之后其实也多了填其他坑的信心，感谢~<br>整理一篇文章确实耗时但又思路更清晰一些了。<br>先模仿好再创作~</p>
 </span>
       
     </div>
@@ -236,13 +248,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/01/08/Hexo初建/" rel="next" title="Hexo初建">
+                <i class="fa fa-chevron-left"></i> Hexo初建
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/08/Gulp任务自动管理工具的基本使用/" rel="prev" title="Gulp任务自动管理工具的基本使用">
-                Gulp任务自动管理工具的基本使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -356,7 +368,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git_26amp_3BGithub"><span class="nav-number">1.</span> <span class="nav-text">Git&Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u642D_u5EFAHexo_u535A_u5BA2"><span class="nav-number">2.</span> <span class="nav-text">搭建Hexo博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u591A_u53F0PC_u95F4_u6587_u7AE0_u540C_u6B65_u95EE_u9898"><span class="nav-number">3.</span> <span class="nav-text">多台PC间文章同步问题</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
