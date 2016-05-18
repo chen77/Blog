@@ -49,19 +49,25 @@
 
 
 
-<meta name="description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
+<meta name="description" content="网页中字体的应用标签（空格分隔）： css 字体
+
+##引入看到这样一句代码，发现是我以前没看到过的便搜索了一下，由此有了对字体应用更深入的认识。1body&amp;#123;font: 14px/26px &apos;Microsoft Yahei&apos;,STHeiti,sans-Serif;&amp;#125;
+首先关于这句代码的含义解释：12345body&amp;#123;    font-size:14px;    line">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gulp任务自动管理工具的基本使用">
-<meta property="og:url" content="http://yoursite.com/2016/01/08/Gulp任务自动管理工具的基本使用/index.html">
+<meta property="og:title" content="chen7's Blog">
+<meta property="og:url" content="http://yoursite.com/2016/05/18/网页中字体的应用/index.html">
 <meta property="og:site_name" content="chen7's Blog">
-<meta property="og:description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
-<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png">
-<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png">
-<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp-3.png">
-<meta property="og:updated_time" content="2016-01-08T07:38:14.073Z">
+<meta property="og:description" content="网页中字体的应用标签（空格分隔）： css 字体
+
+##引入看到这样一句代码，发现是我以前没看到过的便搜索了一下，由此有了对字体应用更深入的认识。1body&amp;#123;font: 14px/26px &apos;Microsoft Yahei&apos;,STHeiti,sans-Serif;&amp;#125;
+首先关于这句代码的含义解释：12345body&amp;#123;    font-size:14px;    line">
+<meta property="og:updated_time" content="2016-05-18T06:11:16.474Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gulp任务自动管理工具的基本使用">
-<meta name="twitter:description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
+<meta name="twitter:title" content="chen7's Blog">
+<meta name="twitter:description" content="网页中字体的应用标签（空格分隔）： css 字体
+
+##引入看到这样一句代码，发现是我以前没看到过的便搜索了一下，由此有了对字体应用更深入的认识。1body&amp;#123;font: 14px/26px &apos;Microsoft Yahei&apos;,STHeiti,sans-Serif;&amp;#125;
+首先关于这句代码的含义解释：12345body&amp;#123;    font-size:14px;    line">
 
 
 
@@ -73,7 +79,7 @@
   };
 </script>
 
-  <title> Gulp任务自动管理工具的基本使用 | chen7's Blog </title>
+  <title>  | chen7's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -183,7 +189,7 @@
             
             
               
-                Gulp任务自动管理工具的基本使用
+                
               
             
           </h1>
@@ -192,8 +198,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-08T10:39:06+08:00" content="2016-01-08">
-              2016-01-08
+            <time itemprop="dateCreated" datetime="2016-05-18T14:11:48+08:00" content="2016-05-18">
+              2016-05-18
             </time>
           </span>
 
@@ -216,27 +222,37 @@
       
 
       
-        <span itemprop="articleBody"><p>前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。<br>这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~<br><a id="more"></a></p>
-<h2 id="Gulp_u662F_u4EC0_u4E48_uFF1F"><a href="#Gulp_u662F_u4EC0_u4E48_uFF1F" class="headerlink" title="Gulp是什么？"></a>Gulp是什么？</h2><p>gulp是基于Node.js的自动任务运行器。所以安装使用gulp之前需要安装node.js。<br><strong>Gulp到底是做什么的呢？</strong>这是刚开始一直很纠结的问题，一直到昨前天跑通后然后看到一张图片对于基础的用法总结得挺好的，另外雪碧图的拼接也是体现了自动化提高了工作效率。<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png" alt="此处输入图片的描述"></p>
-<h2 id="u5B89_u88C5Gulp"><a href="#u5B89_u88C5Gulp" class="headerlink" title="安装Gulp"></a>安装Gulp</h2><p>同样参考三篇入门教程，写得很详细：</p>
+        <span itemprop="articleBody"><h1 id="u7F51_u9875_u4E2D_u5B57_u4F53_u7684_u5E94_u7528"><a href="#u7F51_u9875_u4E2D_u5B57_u4F53_u7684_u5E94_u7528" class="headerlink" title="网页中字体的应用"></a>网页中字体的应用</h1><p>标签（空格分隔）： css 字体</p>
+<hr>
+<p>##引入<br>看到这样一句代码，发现是我以前没看到过的便搜索了一下，由此有了对字体应用更深入的认识。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;<span class="rule"><span class="attribute">font</span>:<span class="value"> <span class="number">14px</span>/<span class="number">26px</span> <span class="string">'Microsoft Yahei'</span>,STHeiti,sans-Serif</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>首先关于这句代码的含义解释：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">14px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">26px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-family</span>:<span class="value"><span class="string">'Microsoft Yahei'</span>,STHeiti,sans-Serif</span></span>;</span><br><span class="line">    &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>更多的解释有<a href="http://www.impressivewebs.com/css-font-shorthand-property-cheat-sheet/" target="_blank" rel="external">CSS Font Shorthand Property Cheat Sheet</a><br>代码的理解就到这里了。接下来更多的是想备忘一下关于字体<code>font-family</code> 的相关设置。</p>
+<p>##web中文字体的应用</p>
+<p>####<strong>同时申明中文字体的名称（英文）和字体的显示名称（中文）</strong></p>
 <blockquote>
-<p><a href="http://javascript.ruanyifeng.com/tool/gulp.html" target="_blank" rel="external">Gulp：任务自动管理工具</a> 阮老师的一个教程，以压缩js文件为例比较清晰细节的介绍了gulp的一些基本模块方法，很适合从0到1的操作；<br><a href="http://www.ydcss.com/archives/18" target="_blank" rel="external">gulp详细入门教程</a>这篇文章比较图文并茂详细，包括作者一系列的gulp插件功能使用介绍文章，了解到了插件方面的东西；<br><a href="http://www.w3ctrain.com/2015/12/22/gulp-for-beginners/#more" target="_blank" rel="external">Gulp新手入门教程</a>这篇文章对于gulp工具的了解学习比较全面详细深入了。</p>
+<p>用户安装了中文版的操作系统（这意味着系统有中文字体），但是却切换到了以英文为主要语言——这种情况在那些希望加强英语锻炼的中文用户当中是很常见的。这时候，操作系统很有可能无法按照显示名称找到正确的字体，所以我们要记住的第一件事情就是： 同时声明中文字体的字体名称（英文）和显示名称（中文）</p>
 </blockquote>
-<p><strong>1.这里打开node.js的操作命令界面全局安装Gulp</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure></p>
+<p>像这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font-family</span>: <span class="tag">SimSun</span>, "宋体";</span><br><span class="line"></span><br><span class="line"><span class="tag">font-family</span>: "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑";</span><br><span class="line"></span><br><span class="line"><span class="tag">font-family</span>: <span class="tag">STXihei</span>, "华文细黑", "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑";</span><br></pre></td></tr></table></figure></p>
+<p>####<strong>声明英文字体应该在中文字体之前,并充英文字体族的名称：非衬线和衬线</strong></p>
 <blockquote>
-<p>npm install是指定从Node Package Manager（nodejs的包管理器）安装的命令<br>-g表示全局安装，这样你在电脑上任何位置都能只用gulp 命令</p>
+<p>绝大部分中文字体里包含英文字母（但是基本上都很丑），而英文字体里不包含中文字符。<br>在网页里中/英文混排是很常见的，你绝对不会喜欢用中文字体显示英文的效果，所以一定不要忘了先声明英文字体<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font-family</span>: <span class="tag">Georgia</span>, <span class="tag">SimSun</span>, "宋体",<span class="tag">serif</span>;;</span><br><span class="line"></span><br><span class="line"><span class="tag">font-family</span>: <span class="tag">Arial</span>, "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑",<span class="tag">sans-serif</span>;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p><strong>2.创建Gulp个人项目</strong><br>建立一个项目文件夹比如就取名叫“project”吧，在这个根目录下创建一个package.json文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure></p>
+<p>####<strong>兼容不同的操作系统</strong><br>华文细黑(Mac)，微软雅黑(Win)是这两个平台的默认中文字体，宋体（Windows XP）的主要使用中文字体。所以兼容性写法<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font-family</span>: <span class="tag">Helvetica</span>, <span class="tag">Tahoma</span>, <span class="tag">Arial</span>, <span class="tag">STXihei</span>, "华文细黑", "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑", <span class="tag">SimSun</span>, "宋体", <span class="tag">Heiti</span>, "黑体", <span class="tag">sans-serif</span>;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>package.json是基于nodejs项目必不可少的配置文件，这个文件保存着这个项目相关信息比如用到的各种依赖（这里主要是插件），<br>package.json是一个普通json文件，所以不能添加任何注释</p>
+<p>首先查找Helvetica(Mac)，然后查找Tahoma(Win)，都找不到就用Arial(Mac&amp;Win)；若是以上三者都缺失，则使用当前默认的sans-serif字体(操作系统或浏览器指定)；<br>在中文字体的用户群体里，很大一部分拥有 Mac 的人都同时安装了 Win 下常用的中文字体（这得归功于 Office for Mac）；但极少有 Win 用户去安装 Mac 下的中文字体。因此，把 Mac 用字体声明在前面几乎不会对 Win 用户产生什么影响<br>这里宋体和黑体都作为备用字体存在。</p>
 </blockquote>
-<p><strong>3.在个人本地项目所在位置安装gulp及相关模块插件（也就是以后每个项目需要自动化构建就要安装一遍）</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev gulp</span><br></pre></td></tr></table></figure></p>
+<p>参考文章：<a href="https://ruby-china.org/topics/14005" target="_blank" rel="external">Web 中文字体应用指南</a></p>
+<p>##移动中文字体的应用<br>三大手机系统的字体资料：</p>
 <blockquote>
-<p>–save：将保存配置信息至package.json（package.json是nodejs项目配置文件）；<br>-dev：保存至package.json的devDependencies节点，不指定-dev将保存至dependencies节点；<br>为什么要保存至package.json？因为node插件包相对来说非常庞大，所以不加入版本管理，将配置信息写入package.json并将其加入版本管理，其他开发者对应下载即可（命令提示符执行npm<br>install，则会根据package.json下载所有需要的包）。</p>
+<p><strong>ios 系统</strong><br>默认中文字体是Heiti SC<br>默认英文字体是Helvetica<br>默认数字字体是HelveticaNeue<br>无微软雅黑字体<br><strong>android 系统</strong><br>默认中文字体是Droidsansfallback<br>默认英文和数字字体是Droid Sans<br>无微软雅黑字体<br><strong>winphone 系统</strong><br>默认中文字体是Dengxian(方正等线体)<br>默认英文和数字字体是Segoe<br>无微软雅黑字体<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 移动端定义字体的代码 */</span></span><br><span class="line"><span class="tag">body</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-family</span>:<span class="value">Helvetica</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>以上，就安装好gulp了，接下来就是给gulp安装插件，不同的插件对应不同的任务功能。<br>这张图很有借鉴意义，干净整洁的项目环境啊~~<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png" alt="此处输入图片的描述"></p>
-<p><strong>4.创建gulp任务，</strong><br>在根目录下创建gulpfile.js文件，它是gulp项目的配置文件，在这个文件里去写task任务，然后命令提示符执行gulp 任务名称就实现了自动化管理操作的事情了。<br>任务配置就去看相关的设置了，这里之前迷糊的地方就是不知道怎么执行gulp任务%&gt;_&lt;%一张图解决吧<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp-3.png" alt="此处输入图片的描述"></p>
-<h2 id="End_u3002"><a href="#End_u3002" class="headerlink" title="End。"></a>End。</h2><p>总体来说gulp主要就是更多自动化的实现了一些后期部署的代码资源处理，效率确实提高了很多特别是雪碧图的操作这些，<br>这次入门gulp多亏朋友时不时的来追着问“gulp弄得咋样啦~”然后入门之后其实也多了填其他坑的信心，感谢~<br>整理一篇文章确实耗时但又思路更清晰一些了。<br>先模仿好再创作~</p>
+<p><em>使用系统默认的字体所达到的视觉效果跟使用微软雅黑字体没有明显的差别，所以</em></p>
+<ul>
+<li>各个手机系统有自己的默认字体，且都不支持微软雅黑</li>
+<li>如无特殊需求，手机端无需定义中文字体，使用系统默认</li>
+<li>英文字体和数字字体可使用 Helvetica ，三种系统都支持</li>
+</ul>
+<p>参考文章：<a href="http://www.cnblogs.com/PeunZhang/p/3592096.html" target="_blank" rel="external">移动web页面使用字体的思考</a></p>
 </span>
       
     </div>
@@ -248,17 +264,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/07/Hexo初建/" rel="next" title="Hexo初建">
-                <i class="fa fa-chevron-left"></i> Hexo初建
+              <a href="/2016/04/25/认识iScroll/" rel="next" title="认识iScroll">
+                <i class="fa fa-chevron-left"></i> 认识iScroll
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/25/认识iScroll/" rel="prev" title="认识iScroll">
-                认识iScroll <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -372,7 +384,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gulp_u662F_u4EC0_u4E48_uFF1F"><span class="nav-number">1.</span> <span class="nav-text">Gulp是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5Gulp"><span class="nav-number">2.</span> <span class="nav-text">安装Gulp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#End_u3002"><span class="nav-number">3.</span> <span class="nav-text">End。</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u7F51_u9875_u4E2D_u5B57_u4F53_u7684_u5E94_u7528"><span class="nav-number">1.</span> <span class="nav-text">网页中字体的应用</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

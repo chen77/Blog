@@ -165,15 +165,197 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/18/网页中字体的应用/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-18T14:11:48+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="u7F51_u9875_u4E2D_u5B57_u4F53_u7684_u5E94_u7528"><a href="#u7F51_u9875_u4E2D_u5B57_u4F53_u7684_u5E94_u7528" class="headerlink" title="网页中字体的应用"></a>网页中字体的应用</h1><p>标签（空格分隔）： css 字体</p>
+<hr>
+<p>##引入<br>看到这样一句代码，发现是我以前没看到过的便搜索了一下，由此有了对字体应用更深入的认识。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;<span class="rule"><span class="attribute">font</span>:<span class="value"> <span class="number">14px</span>/<span class="number">26px</span> <span class="string">'Microsoft Yahei'</span>,STHeiti,sans-Serif</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>首先关于这句代码的含义解释：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">14px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">26px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-family</span>:<span class="value"><span class="string">'Microsoft Yahei'</span>,STHeiti,sans-Serif</span></span>;</span><br><span class="line">    &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>更多的解释有<a href="http://www.impressivewebs.com/css-font-shorthand-property-cheat-sheet/" target="_blank" rel="external">CSS Font Shorthand Property Cheat Sheet</a><br>代码的理解就到这里了。接下来更多的是想备忘一下关于字体<code>font-family</code> 的相关设置。</p>
+<p>##web中文字体的应用</p>
+<p>####<strong>同时申明中文字体的名称（英文）和字体的显示名称（中文）</strong></p>
+<blockquote>
+<p>用户安装了中文版的操作系统（这意味着系统有中文字体），但是却切换到了以英文为主要语言——这种情况在那些希望加强英语锻炼的中文用户当中是很常见的。这时候，操作系统很有可能无法按照显示名称找到正确的字体，所以我们要记住的第一件事情就是： 同时声明中文字体的字体名称（英文）和显示名称（中文）</p>
+</blockquote>
+<p>像这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font-family</span>: <span class="tag">SimSun</span>, "宋体";</span><br><span class="line"></span><br><span class="line"><span class="tag">font-family</span>: "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑";</span><br><span class="line"></span><br><span class="line"><span class="tag">font-family</span>: <span class="tag">STXihei</span>, "华文细黑", "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑";</span><br></pre></td></tr></table></figure></p>
+<p>####<strong>声明英文字体应该在中文字体之前,并充英文字体族的名称：非衬线和衬线</strong></p>
+<blockquote>
+<p>绝大部分中文字体里包含英文字母（但是基本上都很丑），而英文字体里不包含中文字符。<br>在网页里中/英文混排是很常见的，你绝对不会喜欢用中文字体显示英文的效果，所以一定不要忘了先声明英文字体<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font-family</span>: <span class="tag">Georgia</span>, <span class="tag">SimSun</span>, "宋体",<span class="tag">serif</span>;;</span><br><span class="line"></span><br><span class="line"><span class="tag">font-family</span>: <span class="tag">Arial</span>, "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑",<span class="tag">sans-serif</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>####<strong>兼容不同的操作系统</strong><br>华文细黑(Mac)，微软雅黑(Win)是这两个平台的默认中文字体，宋体（Windows XP）的主要使用中文字体。所以兼容性写法<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">font-family</span>: <span class="tag">Helvetica</span>, <span class="tag">Tahoma</span>, <span class="tag">Arial</span>, <span class="tag">STXihei</span>, "华文细黑", "<span class="tag">Microsoft</span> <span class="tag">YaHei</span>", "微软雅黑", <span class="tag">SimSun</span>, "宋体", <span class="tag">Heiti</span>, "黑体", <span class="tag">sans-serif</span>;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>首先查找Helvetica(Mac)，然后查找Tahoma(Win)，都找不到就用Arial(Mac&amp;Win)；若是以上三者都缺失，则使用当前默认的sans-serif字体(操作系统或浏览器指定)；<br>在中文字体的用户群体里，很大一部分拥有 Mac 的人都同时安装了 Win 下常用的中文字体（这得归功于 Office for Mac）；但极少有 Win 用户去安装 Mac 下的中文字体。因此，把 Mac 用字体声明在前面几乎不会对 Win 用户产生什么影响<br>这里宋体和黑体都作为备用字体存在。</p>
+</blockquote>
+<p>参考文章：<a href="https://ruby-china.org/topics/14005" target="_blank" rel="external">Web 中文字体应用指南</a></p>
+<p>##移动中文字体的应用<br>三大手机系统的字体资料：</p>
+<blockquote>
+<p><strong>ios 系统</strong><br>默认中文字体是Heiti SC<br>默认英文字体是Helvetica<br>默认数字字体是HelveticaNeue<br>无微软雅黑字体<br><strong>android 系统</strong><br>默认中文字体是Droidsansfallback<br>默认英文和数字字体是Droid Sans<br>无微软雅黑字体<br><strong>winphone 系统</strong><br>默认中文字体是Dengxian(方正等线体)<br>默认英文和数字字体是Segoe<br>无微软雅黑字体<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 移动端定义字体的代码 */</span></span><br><span class="line"><span class="tag">body</span><span class="rules">&#123;<span class="rule"><span class="attribute">font-family</span>:<span class="value">Helvetica</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><em>使用系统默认的字体所达到的视觉效果跟使用微软雅黑字体没有明显的差别，所以</em></p>
+<ul>
+<li>各个手机系统有自己的默认字体，且都不支持微软雅黑</li>
+<li>如无特殊需求，手机端无需定义中文字体，使用系统默认</li>
+<li>英文字体和数字字体可使用 Helvetica ，三种系统都支持</li>
+</ul>
+<p>参考文章：<a href="http://www.cnblogs.com/PeunZhang/p/3592096.html" target="_blank" rel="external">移动web页面使用字体的思考</a></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/25/认识iScroll/" itemprop="url">
+                  认识iScroll
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-04-25T09:59:46+08:00" content="2016-04-25">
+              2016-04-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -380,7 +562,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
