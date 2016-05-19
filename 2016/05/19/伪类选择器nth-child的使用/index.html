@@ -49,15 +49,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="chen7's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="体会到了伪类选择器：nth-child的强大之处，所以打算系统的记录一下这个css3选择器的相关用法及场景使用的兼容性等。顺便了解学习一下不太常用的其他伪类选择器。
+:nth-child选择器的使用方法：nth-child的基本用法123456789&amp;lt;ul&amp;gt;    &amp;lt;li&amp;gt;第1排&amp;lt;/li&amp;gt;    &amp;lt;li&amp;gt;第2排&amp;lt;/li&amp;gt;    &amp;lt;l">
+<meta property="og:type" content="article">
+<meta property="og:title" content="伪类选择器:nth-child的使用">
+<meta property="og:url" content="http://yoursite.com/2016/05/19/伪类选择器nth-child的使用/index.html">
 <meta property="og:site_name" content="chen7's Blog">
-<meta property="og:description">
+<meta property="og:description" content="体会到了伪类选择器：nth-child的强大之处，所以打算系统的记录一下这个css3选择器的相关用法及场景使用的兼容性等。顺便了解学习一下不太常用的其他伪类选择器。
+:nth-child选择器的使用方法：nth-child的基本用法123456789&amp;lt;ul&amp;gt;    &amp;lt;li&amp;gt;第1排&amp;lt;/li&amp;gt;    &amp;lt;li&amp;gt;第2排&amp;lt;/li&amp;gt;    &amp;lt;l">
+<meta property="og:updated_time" content="2016-05-19T06:12:06.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="chen7's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="伪类选择器:nth-child的使用">
+<meta name="twitter:description" content="体会到了伪类选择器：nth-child的强大之处，所以打算系统的记录一下这个css3选择器的相关用法及场景使用的兼容性等。顺便了解学习一下不太常用的其他伪类选择器。
+:nth-child选择器的使用方法：nth-child的基本用法123456789&amp;lt;ul&amp;gt;    &amp;lt;li&amp;gt;第1排&amp;lt;/li&amp;gt;    &amp;lt;li&amp;gt;第2排&amp;lt;/li&amp;gt;    &amp;lt;l">
 
 
 
@@ -69,7 +73,7 @@
   };
 </script>
 
-  <title> chen7's Blog </title>
+  <title> 伪类选择器:nth-child的使用 | chen7's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -90,9 +94,7 @@
 
 
 
-  <div class="container one-column 
-   page-home 
-">
+  <div class="container one-column page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -159,15 +161,9 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-
-    
-      
 
   
   
@@ -187,10 +183,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/05/19/伪类选择器nth-child的使用/" itemprop="url">
-                  伪类选择器:nth-child的使用
-                </a>
+                伪类选择器:nth-child的使用
               
             
           </h1>
@@ -223,10 +216,7 @@
       
 
       
-        
-          <span itemprop="articleBody">
-            
-              <p>体会到了伪类选择器：nth-child的强大之处，所以打算系统的记录一下这个css3选择器的相关用法及场景使用的兼容性等。顺便了解学习一下不太常用的其他伪类选择器。</p>
+        <span itemprop="articleBody"><p>体会到了伪类选择器：nth-child的强大之处，所以打算系统的记录一下这个css3选择器的相关用法及场景使用的兼容性等。顺便了解学习一下不太常用的其他伪类选择器。</p>
 <h2 id="3Anth-child_u9009_u62E9_u5668_u7684_u4F7F_u7528_u65B9_u6CD5"><a href="#3Anth-child_u9009_u62E9_u5668_u7684_u4F7F_u7528_u65B9_u6CD5" class="headerlink" title=":nth-child选择器的使用方法"></a>:nth-child选择器的使用方法</h2><h3 id="uFF1Anth-child_u7684_u57FA_u672C_u7528_u6CD5"><a href="#uFF1Anth-child_u7684_u57FA_u672C_u7528_u6CD5" class="headerlink" title="：nth-child的基本用法"></a><strong>：nth-child的基本用法</strong></h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第1排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第2排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第3排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第4排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第5排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第6排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">li</span>&gt;</span>第7排<span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>选择第3个li标签<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">ul</span> <span class="tag">li</span><span class="pseudo">:nth-child(3)</span></span><br></pre></td></tr></table></figure></p>
 <p>选择前3个li标签<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">ul</span> <span class="tag">li</span><span class="pseudo">:nth-child(-n+3)</span></span><br></pre></td></tr></table></figure></p>
@@ -268,10 +258,7 @@
 <li><a href="http://www.zhangxinxu.com/wordpress/2011/06/css3%E9%80%89%E6%8B%A9%E5%99%A8nth-child%E5%92%8Cnth-of-type%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82/" target="_blank" rel="external">CSS3选择器:nth-child和:nth-of-type之间的差异</a><h2 id="u5176_u4ED6_u4F2A_u7C7B_u9009_u62E9_u5668_u9009_u62E9_u5668_u7684_u4F7F_u7528_u65B9_u6CD5"><a href="#u5176_u4ED6_u4F2A_u7C7B_u9009_u62E9_u5668_u9009_u62E9_u5668_u7684_u4F7F_u7528_u65B9_u6CD5" class="headerlink" title="其他伪类选择器选择器的使用方法"></a>其他伪类选择器选择器的使用方法</h2>可以参考：<a href="http://www.w3cplus.com/css3/pseudo-class-selector" target="_blank" rel="external">CSS3 选择器——伪类选择器</a></li>
 </ul>
 </blockquote>
-
-            
-          </span>
-        
+</span>
       
     </div>
 
@@ -279,265 +266,32 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/05/18/网页中字体的应用/" rel="next" title="网页中字体的应用">
+                <i class="fa fa-chevron-left"></i> 网页中字体的应用
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/05/18/网页中字体的应用/" itemprop="url">
-                  网页中字体的应用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-18T14:53:06+08:00" content="2016-05-18">
-              2016-05-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="u5F15_u5165"><a href="#u5F15_u5165" class="headerlink" title="引入"></a>引入</h2><p>看到这样一句代码，发现是我以前没看到过的便搜索了一下，由此有了对字体应用更深入的认识。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;<span class="rule"><span class="attribute">font</span>:<span class="value"> <span class="number">14px</span>/<span class="number">26px</span> <span class="string">'Microsoft Yahei'</span>,STHeiti,sans-Serif</span></span>;&#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>首先关于这句代码的含义解释：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span><span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"><span class="number">14px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">line-height</span>:<span class="value"><span class="number">26px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">font-family</span>:<span class="value"><span class="string">'Microsoft Yahei'</span>,STHeiti,sans-Serif</span></span>;</span><br><span class="line">    &#125;</span></span><br></pre></td></tr></table></figure></p>
-<p>更多的解释有<a href="http://www.impressivewebs.com/css-font-shorthand-property-cheat-sheet/">CSS Font Shorthand Property Cheat Sheet</a><br>代码的理解就到这里了。接下来更多的是想备忘一下关于字体<code>font-family</code> 的相关设置。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/18/网页中字体的应用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/08/Gulp任务自动管理工具的基本使用/" itemprop="url">
-                  Gulp任务自动管理工具的基本使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-08T10:39:06+08:00" content="2016-01-08">
-              2016-01-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <p>前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。<br>这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/08/Gulp任务自动管理工具的基本使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/07/Hexo初建/" itemprop="url">
-                  Hexo初建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-01-07T09:14:51+08:00" content="2016-01-07">
-              2016-01-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
       
 
       
-        
-          <p>第二次搭建这个博客，对于很多操作又熟悉了不少，从照搬别人的教程到现在比较知道点其所以然，还是觉得有必要把这些资源步骤整理到一起，以后需要的时候也好再从这个节点展开进阶。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/01/07/Hexo初建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
         </div>
@@ -546,6 +300,10 @@
 
 
         
+  <div class="comments" id="comments">
+    
+  </div>
+
 
       </div>
 
@@ -566,8 +324,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" src="/uploads/avatar.jpg" alt="chen7" itemprop="image"/>
           <p class="site-author-name" itemprop="name">chen7</p>
@@ -612,6 +379,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#3Anth-child_u9009_u62E9_u5668_u7684_u4F7F_u7528_u65B9_u6CD5"><span class="nav-number">1.</span> <span class="nav-text">:nth-child选择器的使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uFF1Anth-child_u7684_u57FA_u672C_u7528_u6CD5"><span class="nav-number">1.1.</span> <span class="nav-text">：nth-child的基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uFF1Anth-child_u4E0Enth-of-type_u7684_u533A_u522B"><span class="nav-number">1.2.</span> <span class="nav-text">：nth-child与nth-of-type的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uFF1Anth-child_u540C_u7CFB_u5217_u5176_u4ED6_u9009_u62E9_u5668_u53CA_u517C_u5BB9_u6027"><span class="nav-number">1.3.</span> <span class="nav-text">：nth-child同系列其他选择器及兼容性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5176_u4ED6_u4F2A_u7C7B_u9009_u62E9_u5668_u9009_u62E9_u5668_u7684_u4F7F_u7528_u65B9_u6CD5"><span class="nav-number">2.</span> <span class="nav-text">其他伪类选择器选择器的使用方法</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -682,6 +466,167 @@
   <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   <script type="text/javascript" src="/js/bootstrap.js"></script>
 
