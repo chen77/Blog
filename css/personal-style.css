@@ -1,3 +1,6 @@
 .donation .btn-donation{
 	display: none;
 }
+.donation{
+	margin-top: 50px;
+}
