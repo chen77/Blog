@@ -4,3 +4,8 @@
 .donation{
 	margin-top: 50px;
 }
+.toc-article{
+	border-left: 1px solid #f2f2f2;
+	padding-left: 10px;
+	line-height: 2;
+}
