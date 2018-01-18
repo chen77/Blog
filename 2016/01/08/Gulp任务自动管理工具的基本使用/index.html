@@ -15,19 +15,42 @@
     <meta name="keywords" content="gulp," />
   
 
-  <meta name="description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
+  <meta name="description" content="Gulp是什么？Gulp 是基于Node.js的自动任务运行器，利用它可以对网站资源进行优化，提高工作效率。
+前端开发可以使用它来处理常见任务：
+
+搭建web本地服务器;
+文件保存时自动重载浏览器；
+使用预处理器如Sass/Less；
+优化资源，比如压缩CSS/JavaScript/图片；
+
+使用Gulp的基本步骤为：安装nodejs -&amp;gt; 全局安装gulp -&amp;gt; 项目安装gulp以及">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gulp任务自动管理工具的基本使用">
 <meta property="og:url" content="http://yoursite.com/2016/01/08/Gulp任务自动管理工具的基本使用/index.html">
 <meta property="og:site_name" content="小其记">
-<meta property="og:description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
+<meta property="og:description" content="Gulp是什么？Gulp 是基于Node.js的自动任务运行器，利用它可以对网站资源进行优化，提高工作效率。
+前端开发可以使用它来处理常见任务：
+
+搭建web本地服务器;
+文件保存时自动重载浏览器；
+使用预处理器如Sass/Less；
+优化资源，比如压缩CSS/JavaScript/图片；
+
+使用Gulp的基本步骤为：安装nodejs -&amp;gt; 全局安装gulp -&amp;gt; 项目安装gulp以及">
 <meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png">
 <meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png">
-<meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp-3.png">
-<meta property="og:updated_time" content="2018-01-18T01:47:29.967Z">
+<meta property="og:updated_time" content="2018-01-18T09:55:28.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gulp任务自动管理工具的基本使用">
-<meta name="twitter:description" content="前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~">
+<meta name="twitter:description" content="Gulp是什么？Gulp 是基于Node.js的自动任务运行器，利用它可以对网站资源进行优化，提高工作效率。
+前端开发可以使用它来处理常见任务：
+
+搭建web本地服务器;
+文件保存时自动重载浏览器；
+使用预处理器如Sass/Less；
+优化资源，比如压缩CSS/JavaScript/图片；
+
+使用Gulp的基本步骤为：安装nodejs -&amp;gt; 全局安装gulp -&amp;gt; 项目安装gulp以及">
 
   
 
@@ -164,7 +187,7 @@
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gulp_u662F_u4EC0_u4E48_uFF1F"><span class="toc-text">Gulp是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B89_u88C5Gulp"><span class="toc-text">安装Gulp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#End_u3002"><span class="toc-text">End。</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gulp_u662F_u4EC0_u4E48_uFF1F"><span class="toc-text">Gulp是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B89_u88C5nodejs"><span class="toc-text">安装nodejs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5168_u5C40_u5B89_u88C5gulp"><span class="toc-text">全局安装gulp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9879_u76EE_u5B89_u88C5gulp"><span class="toc-text">项目安装gulp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5168_u5C40_u5B89_u88C5_u548C_u672C_u5730_u5B89_u88C5_u533A_u522B"><span class="toc-text">全局安装和本地安装区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u914D_u7F6Egulpfile-js_uFF08_u91CD_u8981_uFF09"><span class="toc-text">配置gulpfile.js（重要）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u53C2_u8003"><span class="toc-text">参考</span></a></li></ol>
   </div>
 
 
@@ -217,27 +240,42 @@
 
   <div class="article-content">
     
-      <p>前些日子朋友推荐了gulp自动化构建工具，一直到昨天才把gulp的自动化的方便性给体验上。<br>这个过程我也发现自己是一个挺容易跑偏的人，比如看gulp教程的时候估计会因为其中的一个sass关键字就去搜索其他的了，然后没有直线性的以结果为导向的专注于一件事情的去做，以后得专注于目标点的实践之后再去扩展其他的点~<br><a id="more"></a></p>
-<h2 id="Gulp_u662F_u4EC0_u4E48_uFF1F"><a href="#Gulp_u662F_u4EC0_u4E48_uFF1F" class="headerlink" title="Gulp是什么？"></a>Gulp是什么？</h2><p>gulp是基于Node.js的自动任务运行器。所以安装使用gulp之前需要安装node.js。<br><strong>Gulp到底是做什么的呢？</strong>这是刚开始一直很纠结的问题，一直到昨前天跑通后然后看到一张图片对于基础的用法总结得挺好的，另外雪碧图的拼接也是体现了自动化提高了工作效率。<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png" alt="此处输入图片的描述"></p>
-<h2 id="u5B89_u88C5Gulp"><a href="#u5B89_u88C5Gulp" class="headerlink" title="安装Gulp"></a>安装Gulp</h2><p>同样参考三篇入门教程，写得很详细：</p>
-<blockquote>
-<p><a href="http://javascript.ruanyifeng.com/tool/gulp.html" target="_blank" rel="external">Gulp：任务自动管理工具</a> 阮老师的一个教程，以压缩js文件为例比较清晰细节的介绍了gulp的一些基本模块方法，很适合从0到1的操作；<br><a href="http://www.ydcss.com/archives/18" target="_blank" rel="external">gulp详细入门教程</a>这篇文章比较图文并茂详细，包括作者一系列的gulp插件功能使用介绍文章，了解到了插件方面的东西；<br><a href="http://www.w3ctrain.com/2015/12/22/gulp-for-beginners/#more" target="_blank" rel="external">Gulp新手入门教程</a>这篇文章对于gulp工具的了解学习比较全面详细深入了。</p>
-</blockquote>
-<p><strong>1.这里打开node.js的操作命令界面全局安装Gulp</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g gulp</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>npm install是指定从Node Package Manager（nodejs的包管理器）安装的命令<br>-g表示全局安装，这样你在电脑上任何位置都能只用gulp 命令</p>
-</blockquote>
-<p><strong>2.创建Gulp个人项目</strong><br>建立一个项目文件夹比如就取名叫“project”吧，在这个根目录下创建一个package.json文件。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>package.json是基于nodejs项目必不可少的配置文件，这个文件保存着这个项目相关信息比如用到的各种依赖（这里主要是插件），<br>package.json是一个普通json文件，所以不能添加任何注释</p>
-</blockquote>
-<p><strong>3.在个人本地项目所在位置安装gulp及相关模块插件（也就是以后每个项目需要自动化构建就要安装一遍）</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev gulp</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>–save：将保存配置信息至package.json（package.json是nodejs项目配置文件）；<br>-dev：保存至package.json的devDependencies节点，不指定-dev将保存至dependencies节点；<br>为什么要保存至package.json？因为node插件包相对来说非常庞大，所以不加入版本管理，将配置信息写入package.json并将其加入版本管理，其他开发者对应下载即可（命令提示符执行npm<br>install，则会根据package.json下载所有需要的包）。</p>
-</blockquote>
+      <p><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png" alt="此处输入图片的描述"></p>
+<h2 id="Gulp_u662F_u4EC0_u4E48_uFF1F"><a href="#Gulp_u662F_u4EC0_u4E48_uFF1F" class="headerlink" title="Gulp是什么？"></a>Gulp是什么？</h2><p><a href="https://www.gulpjs.com.cn/docs/" target="_blank" rel="external">Gulp</a> 是基于Node.js的自动任务运行器，利用它可以对网站资源进行优化，提高工作效率。</p>
+<p>前端开发可以使用它来处理常见任务：</p>
+<ul>
+<li>搭建web本地服务器;</li>
+<li>文件保存时自动重载浏览器；</li>
+<li>使用预处理器如Sass/Less；</li>
+<li>优化资源，比如压缩CSS/JavaScript/图片；</li>
+</ul>
+<p>使用Gulp的基本步骤为：<strong>安装nodejs -&gt; 全局安装gulp -&gt; 项目安装gulp以及gulp插件 -&gt; 配置gulpfile.js -&gt; 运行任务</strong></p>
+<h2 id="u5B89_u88C5nodejs"><a href="#u5B89_u88C5nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>gulp是基于nodejs，所以使用前需要安装<a href="http://nodejs.cn/" target="_blank" rel="external">nodejs</a></p>
+<p>在操作过过程中不可避免的会使用到CLI（command-line interface,命令行界面)，关于命令行可以了解一下<a href="http://www.cnblogs.com/PeunZhang/p/5553574.html" target="_blank" rel="external">npm 常用命令详解</a> </p>
+<p><em><a href="https://zh.wikipedia.org/wiki/Npm" target="_blank" rel="external">npm</a>（Node Package Manager，即node包管理器）是Node.js默认的以javascript编写的软件包管理系统。</em></p>
+<h2 id="u5168_u5C40_u5B89_u88C5gulp"><a href="#u5168_u5C40_u5B89_u88C5gulp" class="headerlink" title="全局安装gulp"></a>全局安装gulp</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
+<p><code>-g</code>表示全局安装，将会安装在C:\Users\Administrator\AppData\Roaming\npm，并且写入系统环境变量，这样在电脑任何位置都能使用gulp命令，非全局安装：将会安装在当前定位目录，本地安装将安装在定位目录的node_modules文件夹下，通过require()调用；</p>
+<p><code>--save</code> 将保存配置信息至package.json(nodejs项目配置文件)；</p>
+<p><code>-dev</code> 保存至package.json的devDependencies节点，不指定-dev将保存至dependencies节点；</p>
+<p>全局安装gulp为了通过它执行gulp任务，执行<code>gulp -v</code> 检查是否正确安装；</p>
+<h2 id="u9879_u76EE_u5B89_u88C5gulp"><a href="#u9879_u76EE_u5B89_u88C5gulp" class="headerlink" title="项目安装gulp"></a>项目安装gulp</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm init <span class="comment">//创建package.json文件</span></span><br></pre></td></tr></table></figure>
+<p>package.json是基于nodejs项目必不可少的配置文件，它是存放在项目根目录的普通json文件；</p>
+<p>安装包的信息可保持到项目的package.json文件中，比如项目用到的各种依赖，以便后续的其它的项目开发或者他人合作使用，也说package.json在项目中是必不可少的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install gulp --save-dev</span><br></pre></td></tr></table></figure>
+<p>局部安装Gulp。使用–save-dev，将通知计算机在package.json中添加gulp依赖。</p>
+<p>执行完之后，gulp将创建node_modules文件夹，里面有个gulp文件夹。</p>
+<p><em>npm安装时会多出一个package-lock.json文件，这是新版本nodejs的原因，具体用处可参考</em>:</p>
+<p><a href="https://docs.npmjs.com/files/package-locks" target="_blank" rel="external">npm-package-locks</a> </p>
+<p><a href="https://www.zhihu.com/question/62331583" target="_blank" rel="external">package-lock.json有什么用？</a>  </p>
 <p>以上，就安装好gulp了，接下来就是给gulp安装插件，不同的插件对应不同的任务功能。<br>这张图很有借鉴意义，干净整洁的项目环境啊~~<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png" alt="此处输入图片的描述"></p>
-<p><strong>4.创建gulp任务，</strong><br>在根目录下创建gulpfile.js文件，它是gulp项目的配置文件，在这个文件里去写task任务，然后命令提示符执行gulp 任务名称就实现了自动化管理操作的事情了。<br>任务配置就去看相关的设置了，这里之前迷糊的地方就是不知道怎么执行gulp任务%&gt;_&lt;%一张图解决吧<br><img src="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp-3.png" alt="此处输入图片的描述"></p>
-<h2 id="End_u3002"><a href="#End_u3002" class="headerlink" title="End。"></a>End。</h2><p>总体来说gulp主要就是更多自动化的实现了一些后期部署的代码资源处理，效率确实提高了很多特别是雪碧图的操作这些，<br>这次入门gulp多亏朋友时不时的来追着问“gulp弄得咋样啦~”然后入门之后其实也多了填其他坑的信心，感谢~<br>整理一篇文章确实耗时但又思路更清晰一些了。<br>先模仿好再创作~</p>
+<h2 id="u5168_u5C40_u5B89_u88C5_u548C_u672C_u5730_u5B89_u88C5_u533A_u522B"><a href="#u5168_u5C40_u5B89_u88C5_u548C_u672C_u5730_u5B89_u88C5_u533A_u522B" class="headerlink" title="全局安装和本地安装区别"></a>全局安装和本地安装区别</h2><p>全局安装gulp是为了执行gulp任务，本地安装gulp则是为了调用gulp插件的功能。另参考：</p>
+<p><a href="http://www.cnblogs.com/PeunZhang/p/5629329.html" target="_blank" rel="external">nodejs全局安装和本地安装的区别</a></p>
+<h2 id="u914D_u7F6Egulpfile-js_uFF08_u91CD_u8981_uFF09"><a href="#u914D_u7F6Egulpfile-js_uFF08_u91CD_u8981_uFF09" class="headerlink" title="配置gulpfile.js（重要）"></a>配置gulpfile.js（<code>重要</code>）</h2><p>gulpfile.js是gulp项目的配置文件，是位于项目根目录的普通js文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入工具包 require('node_modules里对应模块')</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>), <span class="comment">//告知node去node_modules中查gulp包</span></span><br><span class="line">     less = <span class="built_in">require</span>(<span class="string">'gulp-less'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">//定义一个testLess任务（自定义任务名称），稍后在命令行钟执行gulp testLess，将运行该任务</span></span><br><span class="line">gulp.task(<span class="string">'testLess'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(<span class="string">'src/less/index.less'</span>) <span class="comment">//该任务针对的文件</span></span><br><span class="line">        .pipe(less()) <span class="comment">//该任务调用的模块</span></span><br><span class="line">        .pipe(gulp.dest(<span class="string">'src/css'</span>)); <span class="comment">//将会在src/css下生成index.css</span></span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">gulp.task(<span class="string">'default'</span>,[<span class="string">'testLess'</span>, <span class="string">'elseTask'</span>]); <span class="comment">//定义默认任务 elseTask为其他任务，该示例没有定义elseTask任务</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//gulp.task(name[, deps], fn) 定义任务  name：任务名称 deps：依赖任务名称 fn：回调函数</span></span><br><span class="line"><span class="comment">//gulp.src(globs[, options]) 执行任务处理的文件  globs：处理的文件路径(字符串或者字符串数组) </span></span><br><span class="line"><span class="comment">//gulp.dest(path[, options]) 处理完后文件生成路径</span></span><br></pre></td></tr></table></figure>
+<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.gulpjs.com.cn/docs/" target="_blank" rel="external">gulp 中文文档</a> </p>
+<p><a href="http://javascript.ruanyifeng.com/tool/gulp.html" target="_blank" rel="external">Gulp：任务自动管理工具</a> 阮老师的一个教程，以压缩js文件为例比较清晰细节的介绍了gulp的一些基本模块方法，很适合从0到1的操作；<br><a href="http://www.ydcss.com/archives/18" target="_blank" rel="external">gulp详细入门教程</a>系列文章；<br><a href="http://www.w3ctrain.com/2015/12/22/gulp-for-beginners/#more" target="_blank" rel="external">Gulp新手入门教程</a>作者翻译的一篇适合新手入门的教程很实用</p>
+</blockquote>
 
     
   </div>
