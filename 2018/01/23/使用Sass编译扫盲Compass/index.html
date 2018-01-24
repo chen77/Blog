@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用Sass编译 | 小其记</title>
+  <title>使用Sass编译扫盲Compass | 小其记</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -22,8 +22,8 @@ Sass只是css预编译工具中的一种，类似的工具还有Less/stylus等�
 Sass安装及其使用安装
 SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Sass编译">
-<meta property="og:url" content="http://yoursite.com/2018/01/23/使用Sass编译/index.html">
+<meta property="og:title" content="使用Sass编译扫盲Compass">
+<meta property="og:url" content="http://yoursite.com/2018/01/23/使用Sass编译扫盲Compass/index.html">
 <meta property="og:site_name" content="小其记">
 <meta property="og:description" content="Sass是什么？
 SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理开发工具，提供了很多便利和简单的语法，让css看起来更像是一门语言，这种特性也被称为“css预编译”。
@@ -31,9 +31,9 @@ SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理�
 Sass只是css预编译工具中的一种，类似的工具还有Less/stylus等。
 Sass安装及其使用安装
 SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
-<meta property="og:updated_time" content="2018-01-24T02:20:14.473Z">
+<meta property="og:updated_time" content="2018-01-24T03:00:15.903Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Sass编译">
+<meta name="twitter:title" content="使用Sass编译扫盲Compass">
 <meta name="twitter:description" content="Sass是什么？
 SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理开发工具，提供了很多便利和简单的语法，让css看起来更像是一门语言，这种特性也被称为“css预编译”。
 
@@ -176,15 +176,15 @@ SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
 
   <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u662F_u4EC0_u4E48_uFF1F"><span class="toc-text">Sass是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u5B89_u88C5_u53CA_u5176_u4F7F_u7528"><span class="toc-text">Sass安装及其使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u8BED_u6CD5"><span class="toc-text">Sass语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u53C2_u8003"><span class="toc-text">参考</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u662F_u4EC0_u4E48_uFF1F"><span class="toc-text">Sass是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u5B89_u88C5_u53CA_u5176_u4F7F_u7528"><span class="toc-text">Sass安装及其使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u8BED_u6CD5"><span class="toc-text">Sass语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4EC0_u4E48_u662FCompass_uFF1F"><span class="toc-text">什么是Compass？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u53C2_u8003"><span class="toc-text">参考</span></a></li></ol>
   </div>
 
 
 
 <div class="content content-post LEFT">
-   <article id="post-使用Sass编译" class="article article-type-post" itemprop="blogPost">
+   <article id="post-使用Sass编译扫盲Compass" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">使用Sass编译</h1>
+    <h1 class="post-title">使用Sass编译扫盲Compass</h1>
 
     <div class="article-meta">
       <span>
@@ -210,7 +210,7 @@ SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
       
         <span>
           <i class="icon-comment"></i>
-          <a href="https://chen77.github.io/2018/01/23/使用Sass编译/#disqus_thread"></a>
+          <a href="https://chen77.github.io/2018/01/23/使用Sass编译扫盲Compass/#disqus_thread"></a>
         </span>
       
 
@@ -296,6 +296,29 @@ SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
 <p><code>sass</code>的<code>@import</code>规则在生成<code>css</code>文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个<code>css</code>文件中，而无需发起额外的下载请求。另外，所有在被导入文件中定义的变量和混合器均可在导入文件中使用。</p>
 <p>那些专门为<code>@import</code>命令而编写的<code>sass</code>文件，并不需要生成对应的独立<code>css</code>文件，这样的<code>sass</code>文件称为局部文件。<code>sass</code>局部文件的文件名以下划线开头。</p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"_test.scss"</span>;</span></span><br></pre></td></tr></table></figure>
+<h2 id="u4EC0_u4E48_u662FCompass_uFF1F"><a href="#u4EC0_u4E48_u662FCompass_uFF1F" class="headerlink" title="什么是Compass？"></a>什么是Compass？</h2><p>Sass本身只是一个编译器（‘css预处理器‘），Compass在它的基础上，封装了一系列有用的模块和模板，补充Sass的功能。它们之间的关系，有点像Javascript和jQuery、Ruby和Rails、python和Django的关系。</p>
+<p><strong>安装</strong></p>
+<p>在已经安装好Ruby的前提下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$gem install compass</span><br></pre></td></tr></table></figure>
+<p><strong>项目初始化</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compass create project <span class="comment">//创建一个名为project的compass项目</span></span><br></pre></td></tr></table></figure>
+<p>里面会有<a href="https://segmentfault.com/a/1190000004998406#articleHeader3" target="_blank" rel="external">config.rb</a>配置文件，和两个子目录<code>sass</code>和<code>stylesheets</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compass create 项目名称 --sass-dir <span class="string">"sass"</span> --css-dir <span class="string">"css"</span> --javascript-dir <span class="string">"js"</span> --images-dir <span class="string">"img"</span><span class="comment">//创建定制化compass项目</span></span><br></pre></td></tr></table></figure>
+<p><strong>编译</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compass compile <span class="comment">//一次性编译，将scss文件编译成css文件</span></span><br><span class="line">compass watch <span class="comment">//自动编译命令，只要scss文件发生变化就会自动编译成css</span></span><br></pre></td></tr></table></figure>
+<p><strong>Compass模块</strong></p>
+<p>Compass采用模块结构，不同模块提供不同的功能，目前内置有五个模块,</p>
+<p>具体可参考<a href="http://compass-style.org/reference/compass/" target="_blank" rel="external">官方文档</a></p>
+<blockquote>
+<ul>
+<li>reset   //重置浏览器默认样式</li>
+<li>css3  //提供css3命令</li>
+<li>layout  //提供布局功能</li>
+<li>typography  //提供板式功能</li>
+<li>utilities  //提供一些不属于其他模块的功能</li>
+</ul>
+</blockquote>
+<p>具体对模块的精简介绍可参考<a href="http://www.ruanyifeng.com/blog/2012/11/compass.html" target="_blank" rel="external">Compass用法指南</a></p>
 <h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>了解了相关的功能写法后发现Sass的编写方式让项目更模块化，减少重复性的录入。当然这些都需要建立在对项目整体有一定规划布局。</p>
 <p>可以预见的是大项目的使用上模块化可以让代码更加容易维护。但是在小的页面站点上用原生的css还是更方便直接的写法。</p>
 <h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><blockquote>
@@ -335,7 +358,7 @@ SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
     <a class="show pull-left" href="/2018/01/20/关于实现垂直居中方法总结/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2018/01/24/什么是Compass/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
@@ -438,7 +461,7 @@ SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
   <script>
     var disqus_shortname = 'forsigner';
     
-    var disqus_url = 'http://yoursite.com/2018/01/23/使用Sass编译/';
+    var disqus_url = 'http://yoursite.com/2018/01/23/使用Sass编译扫盲Compass/';
     
     (function(){
       var dsq = document.createElement('script');
