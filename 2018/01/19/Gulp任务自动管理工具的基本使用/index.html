@@ -41,7 +41,7 @@
 安装nodejs -&amp;gt; 全局安装gulp -&amp;gt; 项目安装gulp以">
 <meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexo-gulp.png">
 <meta property="og:image" content="http://7xpwoc.com1.z0.glb.clouddn.com/hexogulp-2.png">
-<meta property="og:updated_time" content="2018-01-22T06:35:23.890Z">
+<meta property="og:updated_time" content="2018-01-23T10:09:31.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gulp任务自动管理工具的基本使用">
 <meta name="twitter:description" content="Gulp是什么？Gulp 是基于Node.js的自动任务运行器，利用它可以对网站资源进行优化，提高工作效率。
@@ -257,6 +257,10 @@
 <h2 id="u5B89_u88C5nodejs"><a href="#u5B89_u88C5nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><p>gulp是基于nodejs，所以使用前需要安装<a href="http://nodejs.cn/" target="_blank" rel="external">nodejs</a></p>
 <p>在操作过过程中不可避免的会使用到CLI（command-line interface,命令行界面)，关于命令行可以了解一下<a href="http://www.cnblogs.com/PeunZhang/p/5553574.html" target="_blank" rel="external">npm 常用命令详解</a> </p>
 <p><em><a href="https://zh.wikipedia.org/wiki/Npm" target="_blank" rel="external">npm</a>（Node Package Manager，即node包管理器）是Node.js默认的以javascript编写的软件包管理系统。</em></p>
+<p><strong>选装cnpm</strong></p>
+<p>因为npm安装插件是从国外服务器下载，受网络影响大，可能出现异常，如果npm的服务器在中国就好了，所以我们乐于分享的<a href="http://npm.taobao.org/" target="_blank" rel="external">淘宝团队</a>干了这事。来自官网：<em>“这是一个完整 npmjs.org 镜像，你可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。”</em>；</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g cnpm&#10;cnpm install</span><br></pre></td></tr></table></figure>
+<p>注：cnpm跟npm用法完全一致，只是在执行命令时将npm改为cnpm</p>
 <h2 id="u5168_u5C40_u5B89_u88C5gulp"><a href="#u5168_u5C40_u5B89_u88C5gulp" class="headerlink" title="全局安装gulp"></a>全局安装gulp</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
 <p><code>-g</code>表示全局安装，将会安装在C:\Users\Administrator\AppData\Roaming\npm，并且写入系统环境变量，这样在电脑任何位置都能使用gulp命令，非全局安装：将会安装在当前定位目录，本地安装将安装在定位目录的node_modules文件夹下，通过require()调用；</p>
 <p><code>--save</code> 将保存配置信息至package.json(nodejs项目配置文件)；</p>

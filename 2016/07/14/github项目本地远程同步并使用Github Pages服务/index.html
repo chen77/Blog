@@ -15,12 +15,14 @@
     <meta name="keywords" content="github," />
   
 
-  <meta name="description" content="因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。踩过几个坑整理一下。*配置SSH本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而gi">
+  <meta name="description" content="因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。踩过几个坑整理一下。*
+配置SSH本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="github项目本地远程同步并使用Github Pages服务">
 <meta property="og:url" content="http://yoursite.com/2016/07/14/github项目本地远程同步并使用Github Pages服务/index.html">
 <meta property="og:site_name" content="小其记">
-<meta property="og:description" content="因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。踩过几个坑整理一下。*配置SSH本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而gi">
+<meta property="og:description" content="因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。踩过几个坑整理一下。*
+配置SSH本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而g">
 <meta property="og:image" content="http://ww2.sinaimg.cn/mw690/aaf9f3f0gw1f5thhjol5cj20l20l4jvq.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/aaf9f3f0gw1f5the3a733j20td0jlaep.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/mw690/aaf9f3f0gw1f5ti55rjnbj20jn05ut91.jpg">
@@ -28,10 +30,11 @@
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/aaf9f3f0gw1f5ti9p4drmj20nk061aat.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/aaf9f3f0gw1f5tigu40exj20h10bldi7.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/mw690/aaf9f3f0gw1f5tikvh8q6j20s30ntjwi.jpg">
-<meta property="og:updated_time" content="2018-01-22T06:35:26.941Z">
+<meta property="og:updated_time" content="2018-01-22T10:05:24.959Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github项目本地远程同步并使用Github Pages服务">
-<meta name="twitter:description" content="因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。踩过几个坑整理一下。*配置SSH本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而gi">
+<meta name="twitter:description" content="因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。踩过几个坑整理一下。*
+配置SSH本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而g">
 
   
 
@@ -221,9 +224,8 @@
 
   <div class="article-content">
     
-      <ul>
-<li>因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。<br>踩过几个坑整理一下。*<h2 id="u914D_u7F6ESSH"><a href="#u914D_u7F6ESSH" class="headerlink" title="配置SSH"></a>配置SSH</h2>本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而git支持SSH协议，所以github只要知道你的共钥，就可以确认只有你自己才能推送。<br>这个步骤网上能很容易找到配置教程，就不细谈了。</li>
-</ul>
+      <p>因为建立这个博客的原因学习了git，后来渐渐的也开始将自己的项目代码托管到了github中，这之前都是利用github客户端同步代码，可是昨天开始客户端同步出现了问题，本来说卸载重新安装但一直也安装不上，所以转战直接git同步。<br>踩过几个坑整理一下。*</p>
+<h2 id="u914D_u7F6ESSH"><a href="#u914D_u7F6ESSH" class="headerlink" title="配置SSH"></a>配置SSH</h2><p>本地git和远程github仓库推送同步的联系点就是SSH的配置，因为github需要识别推送的提交确实是你推送的，而不是别人冒充的，而git支持SSH协议，所以github只要知道你的共钥，就可以确认只有你自己才能推送。<br>这个步骤网上能很容易找到配置教程，就不细谈了。</p>
 <h2 id="u4F7F_u7528Github_Pages_u670D_u52A1"><a href="#u4F7F_u7528Github_Pages_u670D_u52A1" class="headerlink" title="使用Github Pages服务"></a>使用Github Pages服务</h2><p>当我们想要在线展示我们的项目代码时可以选择github pages 服务，具体的，<br><a id="more"></a></p>
 <ul>
 <li>首先在github创建一个repository，比如我创建了一个项目myDis，在setting里点击<code>launch automatic page generator</code>最后就可以 以它生成的地址进行访问了如图：<br><img src="http://ww2.sinaimg.cn/mw690/aaf9f3f0gw1f5thhjol5cj20l20l4jvq.jpg" alt="github pages"></li>
