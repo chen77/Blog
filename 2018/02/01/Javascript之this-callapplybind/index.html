@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript之this-call/apply/bind | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="javascript," />
+  
+
+  <meta name="description" content="thisthis关键字 在js中可谓随处可见，看似简单，但要做到心里有数还是需要来一次的梳理。
+
+无论是否在严格模式下，在全局执行上下文中（在任何函数体外部）this都指代全局对象;
+在函数内部，this的值取决于函数被调用的方式。
+
+所以this的值不是固定的，它的值不取决于它所在的位置，而在于他所在的function是被怎样调用的。
+接下来理解一下函数的几种调用方式和它的this值吧：
+1.全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript之this-call/apply/bind">
+<meta property="og:url" content="http://yoursite.com/2018/02/01/Javascript之this-callapplybind/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="thisthis关键字 在js中可谓随处可见，看似简单，但要做到心里有数还是需要来一次的梳理。
+
+无论是否在严格模式下，在全局执行上下文中（在任何函数体外部）this都指代全局对象;
+在函数内部，this的值取决于函数被调用的方式。
+
+所以this的值不是固定的，它的值不取决于它所在的位置，而在于他所在的function是被怎样调用的。
+接下来理解一下函数的几种调用方式和它的this值吧：
+1.全">
+<meta property="og:updated_time" content="2018-02-02T01:41:52.036Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript之this-call/apply/bind">
+<meta name="twitter:description" content="thisthis关键字 在js中可谓随处可见，看似简单，但要做到心里有数还是需要来一次的梳理。
+
+无论是否在严格模式下，在全局执行上下文中（在任何函数体外部）this都指代全局对象;
+在函数内部，this的值取决于函数被调用的方式。
+
+所以this的值不是固定的，它的值不取决于它所在的位置，而在于他所在的function是被怎样调用的。
+接下来理解一下函数的几种调用方式和它的this值吧：
+1.全">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#this"><span class="toc-text">this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#call/apply/bind"><span class="toc-text">call/apply/bind</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-Javascript之this-callapplybind" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Javascript之this-call/apply/bind</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/js相关/">js相关</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2018/02/01/Javascript之this-callapplybind/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="external">this关键字</a> 在js中可谓随处可见，看似简单，但要做到心里有数还是需要来一次的梳理。</p>
+<blockquote>
+<p>无论是否在严格模式下，在<em>全局执行上下文</em>中（在任何函数体外部）<code>this</code>都指代全局对象;</p>
+<p>在<em>函数内部</em>，<code>this</code>的值取决于函数被调用的方式。</p>
+</blockquote>
+<p><strong>所以this的值不是固定的，它的值不取决于它所在的位置，而在于他所在的function是被怎样调用的。</strong></p>
+<p>接下来理解一下函数的几种调用方式和它的this值吧：</p>
+<p><strong>1.全局函数调用</strong></p>
+<p>这里又有严格模式和非严格模式的区别。</p>
+<p><strong>非严格模式下 </strong> this的值默认指向全局对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.b=<span class="number">1</span>;</span><br><span class="line">  alert(<span class="keyword">this</span>.b);</span><br><span class="line">&#125;</span><br><span class="line">a();<span class="comment">//1</span></span><br><span class="line"><span class="comment">//----------------</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b=<span class="string">'chen'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.b);<span class="comment">//undefined</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);<span class="comment">//window</span></span><br><span class="line">&#125;</span><br><span class="line">a();</span><br></pre></td></tr></table></figure>
+<p><strong>严格模式下</strong> this将保持他进入执行上下文时的值，所以this将默认undefined。</p>
+<p><strong>2.作为方法被调用</strong></p>
+<p>this指向它的父级(上一级)对象：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    user:<span class="string">"chen"</span>,</span><br><span class="line">    fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.user);  <span class="comment">//chen</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">o.fn();</span><br></pre></td></tr></table></figure>
+<p>更复杂一点<a href="http://www.cnblogs.com/pssp/p/5216085.html" target="_blank" rel="external">案例</a>的理解：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">    a:<span class="number">10</span>,</span><br><span class="line">    b:&#123;</span><br><span class="line">        a:<span class="number">12</span>,</span><br><span class="line">        fn:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.a); <span class="comment">//undefined</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>); <span class="comment">//window</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> j = o.b.fn;</span><br><span class="line">j();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>this永远指向的是最后调用它的对象，也就是看它执行的时候是谁调用的，例子中虽然函数fn是被对象b所引用，但是在将fn赋值给变量j的时候并没有执行所以最终指向的是window.</p>
+</blockquote>
+<p><strong>3.作为构造函数调用</strong></p>
+<p>所谓构造函数，就是通过这个函数生成一个新对像（object）。这时，this就指这个新对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.b = <span class="string">"chen"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a2 = <span class="keyword">new</span> a();</span><br><span class="line"><span class="built_in">console</span>.log(a2.b); <span class="comment">//chen</span></span><br></pre></td></tr></table></figure>
+<p>通过以上其实我们可以了解到this的作用，就是可以实现动态指向不同的作用域中，动态实现其功能的特点，比如我们写了一个方法需要作用于多个对象中，此时就可以用this在不同环境下对不同的父级赋能。</p>
+<h2 id="call/apply/bind"><a href="#call/apply/bind" class="headerlink" title="call/apply/bind"></a>call/apply/bind</h2><p>以上我们可以判定this的默认值，那<strong>当我们需要更改this指向不等于默认值，绑一个环境去执行</strong>呢？</p>
+<p>这个时候就需要用到function的三个方法：</p>
+<ul>
+<li>call()</li>
+<li>apply()</li>
+<li>bind()</li>
+</ul>
+<p><strong>这三个函数的存在意义是改变函数执行时的上下文，再具体一点就是改变函数运行时的this指向。</strong></p>
+<p>理解了<code>this</code>关键字之后我们就更容易看懂下面的这写代码，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'hello,'</span>+name+<span class="string">'我是'</span>+<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> user=&#123;</span><br><span class="line">  name:<span class="string">'chen'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//hello() //这是hello.call()的快捷写法；</span></span><br><span class="line">hello.call(user,<span class="string">'qiqi'</span>);</span><br><span class="line"><span class="comment">//↑第一个参数是绑定前面函数的this指向，之后的参数是传入hello函数中的参数</span></span><br><span class="line">hello.apply(user,[<span class="string">'chichi'</span>]);</span><br><span class="line"><span class="comment">//↑apply方法和call的使用方法一样，只是传参的方式不同，apply是以数组的方式进行传参</span></span><br><span class="line"></span><br><span class="line">hello2=hello.bind(user);<span class="comment">//绑定user环境但不执行返回一个新的function</span></span><br><span class="line">hello2(<span class="string">'keke'</span>);<span class="comment">//传参使用</span></span><br></pre></td></tr></table></figure>
+<p>通过上面得例子我们可以对<strong>call、apply、bind三个方法进行总结比较</strong>了：</p>
+<ul>
+<li>call和apply的使用方法一样，都是将函数的this指向绑定在一个指定的环境对象中，进行传参执行；</li>
+<li>二者的区别是传参方式的不同，apply是进行数组传参；</li>
+<li>call和apply在绑定的同时就已经进行了函数执行；</li>
+<li>bind分两步操作，第一步操作只进行环境绑定但不执行函数，之后在新的function中进行传参使用；</li>
+</ul>
+<p>让我们再看<a href="http://www.html-js.com/article/JavaScript-functional-programming-in-Javascript-Bind-Call-and-Apply" target="_blank" rel="external">一个例子</a>去理解会更直观（感谢翻译）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//设立一个简单地对象作为“上下文”</span></span><br><span class="line"><span class="keyword">var</span> context = &#123; foo: <span class="string">"bar"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//一个在this上下文中指向foo变量的函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnFoo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.foo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 变量在作用域中不存在，因此显示undefined</span></span><br><span class="line">returnFoo(); <span class="comment">// =&gt; undefined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果我们把它绑定在context上下文中</span></span><br><span class="line"><span class="keyword">var</span> bound = returnFoo.bind(context);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在的作用域中有这个变量了</span></span><br><span class="line">bound(); <span class="comment">// =&gt; "bar"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// 这就是Function.prototype.bind的作用.    </span></span><br><span class="line"><span class="comment">//由于returnFoo也是函数，因此它继承了function的原型</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// 如果你觉得享受，接着往下读，下面更精彩</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 有许多方法将函数绑定在一个上下文中</span></span><br><span class="line"><span class="comment">// Call和Apply让你能在上下文中调用函数</span></span><br><span class="line">returnFoo.call(context); <span class="comment">// =&gt; bar</span></span><br><span class="line">returnFoo.apply(context); <span class="comment">// =&gt; bar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 将函数添加到对象中</span></span><br><span class="line">context.returnFoo = returnFoo;</span><br><span class="line">context.returnFoo(); <span class="comment">// =&gt; bar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// 现在我们来玩一点诡异的东西</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Array.prototype 中有一个叫做slice的方法</span></span><br><span class="line"><span class="comment">// 对一个数组调用slice，可以返回一个从start index到end index的数组</span></span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].slice(<span class="number">0</span>,<span class="number">1</span>); <span class="comment">// =&gt; [1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 因此我们把Array.slice赋值给一个本地变量slice</span></span><br><span class="line"><span class="keyword">var</span> slice = <span class="built_in">Array</span>.prototype.slice;</span><br><span class="line"></span><br><span class="line"><span class="comment">//现在的slice是"自由的"，由于Array.prototype中的slice一般指定了上下文</span></span><br><span class="line"><span class="comment">//或者默认为this,此时slice将不起作用</span></span><br><span class="line">slice(<span class="number">0</span>, <span class="number">1</span>); <span class="comment">// =&gt; TypeError: can't convert undefined to object</span></span><br><span class="line">slice([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// =&gt; TypeError: ...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 但是如果我们使用call或者apply，slice又将在一个上下文中执行</span></span><br><span class="line">slice.call([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// =&gt; [1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Apply和Call差不多，只是参数要放在一个数组中</span></span><br><span class="line">slice.apply([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">0</span>,<span class="number">1</span>]); <span class="comment">// =&gt; [1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用call没错了，那么能不呢使用bind呢？</span></span><br><span class="line"><span class="comment">// 没错，我们来把"call"绑定在slice上</span></span><br><span class="line">slice = <span class="built_in">Function</span>.prototype.call.bind(<span class="built_in">Array</span>.prototype.slice);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在slice可以把第一个参数作为上下文了</span></span><br><span class="line">slice([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], <span class="number">0</span>, <span class="number">1</span>); <span class="comment">// =&gt; [1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// 很酷，对吧。现在再来完成一件事</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在我们对bind本身做一件刚才对silce做的事</span></span><br><span class="line"><span class="keyword">var</span> bind = <span class="built_in">Function</span>.prototype.call.bind(<span class="built_in">Function</span>.prototype.bind);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在这里总结一下，好好想想</span></span><br><span class="line"><span class="comment">// 发生了什么事? 我们改变了call，</span></span><br><span class="line"><span class="comment">// 返回一个接收一个函数和一个上下文作为ic桉树的函数</span></span><br><span class="line"><span class="comment">//并且返回了一个完全绑定的函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 回到最初的例子</span></span><br><span class="line"><span class="keyword">var</span> context = &#123; foo: <span class="string">"bar"</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">returnFoo</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.foo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在来使用神奇的"bind"函数</span></span><br><span class="line"><span class="keyword">var</span> amazing = bind(returnFoo, context);</span><br><span class="line">amazing(); <span class="comment">// =&gt; bar</span></span><br></pre></td></tr></table></figure>
+<p><strong>推荐阅读</strong></p>
+<blockquote>
+<p><a href="https://hijiangtao.github.io/2017/05/07/Full-Usage-of-Apply-Call-and-Bind-in-JavaScript/" target="_blank" rel="external">[译] JavaScript 中至关重要的 Apply, Call 和 Bind</a></p>
+<p><a href="http://web.jobbole.com/83642/" target="_blank" rel="external">深入浅出妙用 Javascript 中 apply、call、bind</a></p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/01/31/JavaScript之基础知识/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/02/01/JavaScript之回调函数callback/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/02/01/Javascript之this-callapplybind/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

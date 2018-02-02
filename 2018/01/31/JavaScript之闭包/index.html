@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript之闭包（翻译） | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="javascript," />
+  
+
+  <meta name="description" content="原文地址：http://javascriptissexy.com/understand-javascript-closures-with-ease/#
+
+使用闭包可以让我们写出更具有创造性，能简明清晰表达的代码。事实上我们都在经常使用闭包，不管你使用javascript的经验有多少，你都会不自觉的一次又一次用到它。当然有时候闭包可能会显得有些复杂超出了你的理解范围，但是读了这篇文章之后，你一定会更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript之闭包（翻译）">
+<meta property="og:url" content="http://yoursite.com/2018/01/31/JavaScript之闭包/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="原文地址：http://javascriptissexy.com/understand-javascript-closures-with-ease/#
+
+使用闭包可以让我们写出更具有创造性，能简明清晰表达的代码。事实上我们都在经常使用闭包，不管你使用javascript的经验有多少，你都会不自觉的一次又一次用到它。当然有时候闭包可能会显得有些复杂超出了你的理解范围，但是读了这篇文章之后，你一定会更">
+<meta property="og:updated_time" content="2018-02-02T08:39:33.887Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript之闭包（翻译）">
+<meta name="twitter:description" content="原文地址：http://javascriptissexy.com/understand-javascript-closures-with-ease/#
+
+使用闭包可以让我们写出更具有创造性，能简明清晰表达的代码。事实上我们都在经常使用闭包，不管你使用javascript的经验有多少，你都会不自觉的一次又一次用到它。当然有时候闭包可能会显得有些复杂超出了你的理解范围，但是读了这篇文章之后，你一定会更">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u4EC0_u4E48_u662F_u95ED_u5305_uFF1F"><span class="toc-text">什么是闭包？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u95ED_u5305_u7684_u4F7F_u7528_u89C4_u5219_u548C_u4E00_u4E9B_u526F_u4F5C_u7528"><span class="toc-text">闭包的使用规则和一些副作用</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-JavaScript之闭包" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Javascript之闭包（翻译）</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.01.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/js相关/">js相关</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2018/01/31/JavaScript之闭包/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p> 原文地址：<a href="http://javascriptissexy.com/understand-javascript-closures-with-ease/#" target="_blank" rel="external">http://javascriptissexy.com/understand-javascript-closures-with-ease/#</a></p>
+</blockquote>
+<p>使用闭包可以让我们写出更具有创造性，能简明清晰表达的代码。事实上我们都在经常使用闭包，不管你使用javascript的经验有多少，你都会不自觉的一次又一次用到它。当然有时候闭包可能会显得有些复杂超出了你的理解范围，但是读了这篇文章之后，你一定会更轻松容易的理解它，另外也会更吸引你在每天的js变成任务中使用它。</p>
+<p>这是一篇相当短小的文章详细的介绍了javascrip的闭包，阅读之前你需要弄清楚<a href="http://javascriptissexy.com/javascript-variable-scope-and-hoisting-explained/" target="_blank" rel="external">javascript作用域</a>,这可以帮助你更好的理解。</p>
+<h2 id="u4EC0_u4E48_u662F_u95ED_u5305_uFF1F"><a href="#u4EC0_u4E48_u662F_u95ED_u5305_uFF1F" class="headerlink" title="什么是闭包？"></a>什么是闭包？</h2><p>一个闭包是一个可以访问外部函数变量作用域的内部函数。</p>
+<p>闭包可以有三个作用域链：定义在他自身函数内部的变量，他也可以使用父级函数的变量，还可以使用全局变量。</p>
+<p>内部的函数不仅能使用外部函数的变量，还可以使用外部函数的参数，但是不能使用外部函数的arguments对象。</p>
+<p>你可以很容易创建一个闭包，通过把一个函数添加到另一个函数内部就可以了。</p>
+<p><strong>javascript中的一个常见例子</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showName</span> (<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> nameIntro = <span class="string">"Your name is "</span>;</span><br><span class="line">  <span class="comment">//这个内部函数可以使用外部函数的变量包括他的参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeFullName</span> (<span class="params"></span>) </span>&#123;  </span><br><span class="line">	<span class="keyword">return</span> nameIntro + firstName + <span class="string">" "</span> + lastName;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> makeFullName ();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">showName (<span class="string">"Michael"</span>, <span class="string">"Jackson"</span>); <span class="comment">// Your name is Michael Jackson</span></span><br></pre></td></tr></table></figure>
+<p>在Node.js中经常使用到闭包，在jquery或者很多javascript片段中也经常使用到闭包的概念。</p>
+<p><strong>jQuer中一个常见的例子</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> selections = []; </span><br><span class="line">	$(<span class="string">".niners"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">// 这个闭包可以访问selections的变量</span></span><br><span class="line">	selections.push (<span class="keyword">this</span>.prop(<span class="string">"name"</span>)); <span class="comment">//更新selections的变量取值范围</span></span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="u95ED_u5305_u7684_u4F7F_u7528_u89C4_u5219_u548C_u4E00_u4E9B_u526F_u4F5C_u7528"><a href="#u95ED_u5305_u7684_u4F7F_u7528_u89C4_u5219_u548C_u4E00_u4E9B_u526F_u4F5C_u7528" class="headerlink" title="闭包的使用规则和一些副作用"></a>闭包的使用规则和一些副作用</h2><p><strong>1.闭包可以使用外部函数的变量哪怕外部函数有返回值</strong>：</p>
+<p>关于闭包最重要的一个功能就是内部函数可以使用外部函数的变量，哪怕外部函数有了返回值。是的，这句话你没听错，当函数在javascript中执行时，他们使用相同的作用域链当他们一旦被创建，这意味着即便外层函数有了新的返回值，内部函数依然可以访问了外部函数的变量，看下面这个例子演示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">celebrityName</span> (<span class="params">firstName</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> nameIntro = <span class="string">"This celebrity is "</span>;</span><br><span class="line">    <span class="comment">// 这个内部函数可以访问外部函数的变量包括参数</span></span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">lastName</span> (<span class="params">theLastName</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> nameIntro + firstName + <span class="string">" "</span> + theLastName;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> lastName;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> mjName = celebrityName (<span class="string">"Michael"</span>);</span><br><span class="line"><span class="comment">// 在这里外层函数celebrityName有一个返回值</span></span><br><span class="line"><span class="comment">//闭包在当外层函数有了返回值之后进行执行</span></span><br><span class="line"><span class="comment">// 这个闭包函数依然可以访问外层函数的变量和参数</span></span><br><span class="line">mjName (<span class="string">"Jackson"</span>); <span class="comment">// This celebrity is Michael Jackson</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.闭包的储存值依据于外层函数的变量</strong></p>
+<p>他们并不会储存实际被返回的值，在闭包被执行之前它对外层函数的变量改变更感兴趣。这个特点让闭包在某些代码的处理方式上更具有积极性，比如一下这个私有变量的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">celebrityID</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> celebrityID = <span class="number">999</span>;</span><br><span class="line">  <span class="comment">//我们可以返回一个内部函数对象</span></span><br><span class="line">  <span class="comment">//所有这些内部函数都可以访问外部函数的变量</span></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getID: <span class="function"><span class="keyword">function</span> (<span class="params"></span>)  </span>&#123;</span><br><span class="line">          <span class="comment">//这个内部函数将返回一个新的celebrityId变量</span></span><br><span class="line">          <span class="comment">//他将返回当前celebrityID的值，即便改变了他的id值</span></span><br><span class="line">          <span class="keyword">return</span> celebrityID;</span><br><span class="line">        &#125;,</span><br><span class="line">        setID: <span class="function"><span class="keyword">function</span> (<span class="params">theNewID</span>)  </span>&#123;</span><br><span class="line">          <span class="comment">//这个内部函数将随时改变外层函数的变量值</span></span><br><span class="line">            celebrityID = theNewID;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mjID = celebrityID (); </span><br><span class="line"><span class="comment">//这里，celebrityId的外层函数已经返回了一个新值</span></span><br><span class="line">mjID.getID(); <span class="comment">// 999</span></span><br><span class="line">mjID.setID(<span class="number">567</span>); <span class="comment">// 改变外层函数的变量</span></span><br><span class="line">mjID.getID();</span><br><span class="line"><span class="comment">//567他返回了一个新的celebrityId的变量值</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.闭包所引发的问题</strong></p>
+<p>因为闭包可以改变外层函数的变量，所以他们同样可以引起很多bug当外层函数执行for循环的时候，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这个例子进行了详细的说明</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">celebrityIDCreator</span> (<span class="params">theCelebrities</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i;</span><br><span class="line">    <span class="keyword">var</span> uniqueID = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; theCelebrities.length; i++) &#123;</span><br><span class="line">      theCelebrities[i][<span class="string">"id"</span>] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)  </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> uniqueID + i;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> theCelebrities;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> actionCelebs = [</span><br><span class="line">  &#123;name:<span class="string">"Stallone"</span>, id:<span class="number">0</span>&#125;, </span><br><span class="line">  &#123;name:<span class="string">"Cruise"</span>, id:<span class="number">0</span>&#125;, </span><br><span class="line">  &#123;name:<span class="string">"Willis"</span>, id:<span class="number">0</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createIdForActionCelebs = celebrityIDCreator (actionCelebs);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> stalloneID = createIdForActionCelebs[<span class="number">0</span>];</span><br><span class="line"><span class="built_in">console</span>.log(stalloneID.id()); <span class="comment">// 103</span></span><br></pre></td></tr></table></figure>
+<p>前面这个函数，当匿名函数被执行时，i的值是3（即数组的长度），这个数字3被加到了uniqueID中即103，所以任何位置都可以得到数组的id=103，而不是类似的100，101，102。</p>
+<p>发生这个情况的原因是，当我们在讨论前面这个案例的时候，这个闭包（即例子中的匿名函数）已经获取了外层函数的变量作为参考，而不是他的返回值，所以就像前面案例显示的那样我们可以利用闭包使用最新的变量值，这个例子中同样可以使用改变之后的i变量，因为外层函数执行了整个循环返回了最后的i值103.</p>
+<p>为了弥补这个闭包所引发的负影响，你可以用立即执行函数（IIFE）像下面这样去使用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">celebrityIDCreator</span> (<span class="params">theCelebrities</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i;</span><br><span class="line">    <span class="keyword">var</span> uniqueID = <span class="number">100</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; theCelebrities.length; i++) &#123;</span><br><span class="line">        theCelebrities[i][<span class="string">"id"</span>] = <span class="function"><span class="keyword">function</span> (<span class="params">j</span>)  </span>&#123; <span class="comment">// 这个形参j是i传入这个立即执行函数中的</span></span><br><span class="line">            <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> uniqueID + j; <span class="comment">//每次迭代都将当前的i的值传入立即执行函数中并保存这个数组的当前值</span></span><br><span class="line">            &#125; () <span class="comment">//在函数的末尾添加一对括号()，我们可以立即执行他然后返回uniqueID+j的值，而不是返回整个函数</span></span><br><span class="line">        &#125; (i); <span class="comment">// 立即执行函数将i作为一个参数传进来</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> theCelebrities;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> actionCelebs = [&#123;name:<span class="string">"Stallone"</span>, id:<span class="number">0</span>&#125;, &#123;name:<span class="string">"Cruise"</span>, id:<span class="number">0</span>&#125;, &#123;name:<span class="string">"Willis"</span>, id:<span class="number">0</span>&#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> createIdForActionCelebs = celebrityIDCreator (actionCelebs);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> stalloneID = createIdForActionCelebs [<span class="number">0</span>];</span><br><span class="line"><span class="built_in">console</span>.log(stalloneID.id); <span class="comment">// 100</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cruiseID = createIdForActionCelebs [<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(cruiseID.id); <span class="comment">// 101</span></span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/01/30/自定义Emmet模板/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/01/31/JavaScript之基础知识/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/01/31/JavaScript之闭包/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

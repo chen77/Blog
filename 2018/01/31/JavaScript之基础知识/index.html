@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Javascript之基础知识 | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="javascript," />
+  
+
+  <meta name="description" content="数据类型
+1234567891011121314151617181920212223242526//Number数字123//整数1.2//浮点数-1//负数1.2e4//12000NaN//Not a numberInfinity//无限大//String字符串&apos;小其记&apos;；&quot;小其记&quot;；&apos;she\&apos;s&apos;；//转义符//Boolean布尔值true；false；//Array数组[&apos;a&apos;,&apos;b&apos;,1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript之基础知识">
+<meta property="og:url" content="http://yoursite.com/2018/01/31/JavaScript之基础知识/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="数据类型
+1234567891011121314151617181920212223242526//Number数字123//整数1.2//浮点数-1//负数1.2e4//12000NaN//Not a numberInfinity//无限大//String字符串&apos;小其记&apos;；&quot;小其记&quot;；&apos;she\&apos;s&apos;；//转义符//Boolean布尔值true；false；//Array数组[&apos;a&apos;,&apos;b&apos;,1">
+<meta property="og:updated_time" content="2018-01-31T07:06:11.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript之基础知识">
+<meta name="twitter:description" content="数据类型
+1234567891011121314151617181920212223242526//Number数字123//整数1.2//浮点数-1//负数1.2e4//12000NaN//Not a numberInfinity//无限大//String字符串&apos;小其记&apos;；&quot;小其记&quot;；&apos;she\&apos;s&apos;；//转义符//Boolean布尔值true；false；//Array数组[&apos;a&apos;,&apos;b&apos;,1">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-JavaScript之基础知识" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Javascript之基础知识</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.01.31</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/js相关/">js相关</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2018/01/31/JavaScript之基础知识/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p><strong>数据类型</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Number数字</span></span><br><span class="line"><span class="number">123</span><span class="comment">//整数</span></span><br><span class="line"><span class="number">1.2</span><span class="comment">//浮点数</span></span><br><span class="line">-<span class="number">1</span><span class="comment">//负数</span></span><br><span class="line"><span class="number">1.2e4</span><span class="comment">//12000</span></span><br><span class="line"><span class="literal">NaN</span><span class="comment">//Not a number</span></span><br><span class="line"><span class="literal">Infinity</span><span class="comment">//无限大</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//String字符串</span></span><br><span class="line"><span class="string">'小其记'</span>；</span><br><span class="line"><span class="string">"小其记"</span>；</span><br><span class="line"><span class="string">'she\'s'</span>；<span class="comment">//转义符</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Boolean布尔值</span></span><br><span class="line"><span class="literal">true</span>；</span><br><span class="line"><span class="literal">false</span>；</span><br><span class="line"></span><br><span class="line"><span class="comment">//Array数组</span></span><br><span class="line">[<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//Object对象</span></span><br><span class="line"><span class="keyword">var</span> o=&#123;</span><br><span class="line">  a:<span class="number">1</span>,</span><br><span class="line">  b:<span class="number">2</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> x=o.a+o.b;</span><br></pre></td></tr></table></figure>
+<p><strong>变量</strong></p>
+<p>变量是用来存数据的，可以装各种类型的数据，变量可以装不同类型的值但是只能装一个值，</p>
+<p><code>typeof</code>判断数据类型，</p>
+<p><em>Array打印出来是object，从某种层面上讲Array也是一种对象。可以用数组特有的属性来判断数组，比如array.length</em></p>
+<p><strong>运算符</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//+-*/%加减乘除求余</span></span><br><span class="line"><span class="number">1</span>+<span class="number">1</span>    <span class="comment">//2</span></span><br><span class="line"><span class="string">'1'</span>+<span class="string">'1'</span>  <span class="comment">//11</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//++自增   --自减</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//&gt; &lt; &gt;= &lt;=</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//=赋值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//==判断是否相等</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//===严格模式下判断是否相等 会判断数据类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//！=不等于</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//&amp;&amp;且||或</span></span><br></pre></td></tr></table></figure>
+<p><strong>控制流</strong></p>
+<ul>
+<li>if……else(比较简单的判断)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(条件)&#123;</span><br><span class="line">  <span class="comment">//执行语句</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  <span class="comment">//执行语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般情况下，if条件中的<code>条件</code>false倾向的值有<code>0</code> <code>&#39; &#39;</code> <code>undefined</code> <code>null</code> <code>NaN</code></p>
+<ul>
+<li>switch(比较复杂的判断)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(变量)&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>：<span class="comment">//判断如果变量的值是1</span></span><br><span class="line">  <span class="comment">//……</span></span><br><span class="line">  <span class="keyword">break</span>；<span class="comment">//打断-如果条件满足就停止不执行下面的内容</span></span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>：</span><br><span class="line">  <span class="comment">//执行语句；</span></span><br><span class="line">   <span class="keyword">break</span>；</span><br><span class="line">   <span class="keyword">case</span> <span class="number">3</span>：</span><br><span class="line">  <span class="comment">//执行语句；</span></span><br><span class="line">   <span class="keyword">break</span>；</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">default</span>：</span><br><span class="line">    <span class="comment">//如果都不满足条件默认执行语句</span></span><br><span class="line">   <span class="keyword">break</span>；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>循环</strong></p>
+<ul>
+<li>for循环</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> 初始值；什么条件下循环；每次循环变量的改变)&#123;</span><br><span class="line">	<span class="comment">//循环语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>while循环</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">初始值；</span><br><span class="line"><span class="keyword">while</span>(条件)&#123;</span><br><span class="line">  每次循环后变量的改变； </span><br><span class="line">  <span class="comment">//循环语句</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//循环条之后执行语句</span></span><br></pre></td></tr></table></figure>
+<p><strong>函数</strong></p>
+<p>函数作用</p>
+<ul>
+<li>封装代码-方便重用</li>
+<li>控制数据流</li>
+<li>作用域（全局变量/局部变量）</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 函数名(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//执行语句</span></span><br><span class="line">&#125;</span><br><span class="line">函数名() <span class="comment">//调用函数</span></span><br></pre></td></tr></table></figure>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/01/31/JavaScript之闭包/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/02/01/Javascript之this-callapplybind/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/01/31/JavaScript之基础知识/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
