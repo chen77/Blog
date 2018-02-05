@@ -15,16 +15,25 @@
     <meta name="keywords" content="emmet,sublime," />
   
 
-  <meta name="description" content="生命在于创造">
+  <meta name="description" content="前端开发中相信大家都有各自喜欢的开发工具，个人一直使用的是sublime text，但不管用什么开发工具我们都会使用到一个插件Emmet，可以提高前端代码的编写速度。
+Emmet的使用和书写语法就不做过多的介绍了，今天重点讲一下他的一个自定模板的使用。
+在sublime text安装emmet插件后输入!按tab键就可以快速生成一个html5的模板如下：
+12345678910&amp;lt;!DOCTY">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义Emmet模板">
 <meta property="og:url" content="http://yoursite.com/2018/01/30/自定义Emmet模板/index.html">
 <meta property="og:site_name" content="小其记">
-<meta property="og:description" content="生命在于创造">
-<meta property="og:updated_time" content="2018-01-30T10:04:24.987Z">
+<meta property="og:description" content="前端开发中相信大家都有各自喜欢的开发工具，个人一直使用的是sublime text，但不管用什么开发工具我们都会使用到一个插件Emmet，可以提高前端代码的编写速度。
+Emmet的使用和书写语法就不做过多的介绍了，今天重点讲一下他的一个自定模板的使用。
+在sublime text安装emmet插件后输入!按tab键就可以快速生成一个html5的模板如下：
+12345678910&amp;lt;!DOCTY">
+<meta property="og:updated_time" content="2018-02-05T06:39:06.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义Emmet模板">
-<meta name="twitter:description" content="生命在于创造">
+<meta name="twitter:description" content="前端开发中相信大家都有各自喜欢的开发工具，个人一直使用的是sublime text，但不管用什么开发工具我们都会使用到一个插件Emmet，可以提高前端代码的编写速度。
+Emmet的使用和书写语法就不做过多的介绍了，今天重点讲一下他的一个自定模板的使用。
+在sublime text安装emmet插件后输入!按tab键就可以快速生成一个html5的模板如下：
+12345678910&amp;lt;!DOCTY">
 
   
 
@@ -209,7 +218,25 @@
 
   <div class="article-content">
     
-      
+      <p>前端开发中相信大家都有各自喜欢的开发工具，个人一直使用的是sublime text，但不管用什么开发工具我们都会使用到一个插件Emmet，可以提高前端代码的编写速度。</p>
+<p><a href="https://www.w3cplus.com/tools/emmet-cheat-sheet.html" target="_blank" rel="external">Emmet的使用</a>和书写语法就不做过多的介绍了，今天重点讲一下他的一个自定模板的使用。</p>
+<p>在<a href="http://www.sublimetext.com/" target="_blank" rel="external">sublime text</a>安装emmet插件后输入<code>!</code>按<code>tab</code>键就可以快速生成一个html5的模板如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span> <span class="attribute">lang</span>=<span class="value">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">	</span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这个模板我们很容易得到，但是现在移动端页面居多，针对移动端我们就需要额外的添加一些代码，这个时候是不是也希望我们按一个快捷键比如输入<code>app</code>再按<code>tab</code>就能马上出来移动端页面的模板呢？</p>
+<p><a href="https://gist.github.com/zxhfighter/00c1d140249215efd236" target="_blank" rel="external">这里</a>我们可以实践一下。</p>
+<p>在<code>Preferences -&gt; Package Settings -&gt; Emmet -&gt; Setting - Default</code>中找到Emmet的配置文件，其中的<code>snippets</code>字段</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Custom snippets definitions, as per https://github.com/emmetio/emmet/blob/master/snippets.json</span><br><span class="line">	"snippets": &#123;</span><br><span class="line">		// "html": &#123;</span><br><span class="line">		// 	"abbreviations": &#123;</span><br><span class="line">		// 		"example": "&lt;div class='example' title='Custom element example'&gt;"</span><br><span class="line">		// 	&#125;</span><br><span class="line">		// &#125;</span><br><span class="line">	&#125;,</span><br></pre></td></tr></table></figure>
+<p>然后在用户配置文件中<code>Preferences -&gt; Package Settings -&gt; Emmet -&gt; Setting - User</code>定义自己想要的html片段：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // Custom snippets definitions, as per https://github.com/emmetio/emmet/blob/master/snippets.json</span><br><span class="line">    "snippets": &#123;</span><br><span class="line">        "html": &#123;</span><br><span class="line">            "abbreviations": &#123;</span><br><span class="line">                "example": "&lt;div class='example' title='Custom element example'&gt;",</span><br><span class="line">                "mydoc": "html&gt;(head&gt;meta[charset='utf-8']+title&#123;$&#123;1:文档标题&#125;&#125;)+body",</span><br><span class="line">                "!!": "mydoc[lang='zh-Hans']"</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>abbreviations中左边为快捷键，后面为生成的内容;</li>
+<li><code>&lt;!-- --&gt;</code>和换行<code>\n</code>只能定义在html的snippets中,而不能定义在abbreviations中;</li>
+</ul>
+<p><strong>个人定制模板</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // Custom snippets definitions, as per https://github.com/emmetio/emmet/blob/master/snippets.json</span><br><span class="line">    "snippets": &#123;</span><br><span class="line">        "html": &#123;</span><br><span class="line">            "snippets": &#123;</span><br><span class="line">                "doc":"&lt;!DOCTYPE html&gt;",</span><br><span class="line">                "myfavicon": "&lt;!-- favicon，可更改图片类型 --&gt;\n&lt;link rel=\"shortcut icon\" type=\"image/ico\" href=\"/favicon.ico\" /&gt;\n",</span><br><span class="line">                "mycompat": "&lt;!-- 优先使用 IE 最新版本和 Chrome --&gt;\n&lt;meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\" /&gt;\n",</span><br><span class="line">                "360compat": "&lt;!-- 360 使用Google Chrome Frame --&gt;\n&lt;meta name=\"renderer\" content=\"webkit\"&gt;\n",</span><br><span class="line">                "mykeywords": "&lt;!-- SEO页面关键词 --&gt;\n&lt;meta name=\"keywords\" content=\"your keywords\"&gt;\n",</span><br><span class="line">                "mydesc": "&lt;!-- SEO页面描述 --&gt;\n&lt;meta name=\"description\" content=\"your description\"&gt;\n",</span><br><span class="line">                "myviewport": "&lt;!-- 开启响应式 --&gt;\n&lt;meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"&gt;\n",</span><br><span class="line">            &#125;,</span><br><span class="line">            "abbreviations": &#123;</span><br><span class="line">                "app": "doc+html&gt;(head&gt;meta[charset='utf-8']+title&#123;$&#123;1:文档标题&#125;&#125;+mycompat+myviewport)+body&gt;jq",</span><br><span class="line">                "!":"doc+html&gt;(head&gt;meta[charset='utf-8']+title&#123;$&#123;1:文档标题&#125;&#125;+mycompat+360compat+mykeywords+mydesc)+body&gt;jq",</span><br><span class="line">                "jq": "&lt;script src=\"https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js\"&gt;&lt;/script&gt;",</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>随着不同固定项目的编写，可根据具体的项目引用常用的一些库的快捷方式非常方便。</p>
+<p><strong>附：<a href="https://www.jianshu.com/p/6768a4046bd9" target="_blank" rel="external">SublimeText3插件安装及Emmet失效问题</a></strong></p>
+
     
   </div>
 </article>
