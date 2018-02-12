@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动端之fixed定位和虚拟键盘冲突的问题 | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="fixed," />
+  
+
+  <meta name="description" content="最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。
+
+之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。
+做手机页面时，对于顶部和底部样式的处理，我们会经常使用到display:absolute或者display:fixed来做定位处理，比如
+12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端之fixed定位和虚拟键盘冲突的问题">
+<meta property="og:url" content="http://yoursite.com/2018/02/08/移动端之fixed定位和虚拟键盘冲突的问题/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。
+
+之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。
+做手机页面时，对于顶部和底部样式的处理，我们会经常使用到display:absolute或者display:fixed来做定位处理，比如
+12345678">
+<meta property="og:image" content="http://efe.baidu.com/blog/mobile-fixed-layout/img/fixed_bug_0.png">
+<meta property="og:updated_time" content="2018-02-11T09:50:38.564Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端之fixed定位和虚拟键盘冲突的问题">
+<meta name="twitter:description" content="最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。
+
+之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。
+做手机页面时，对于顶部和底部样式的处理，我们会经常使用到display:absolute或者display:fixed来做定位处理，比如
+12345678">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-移动端之fixed定位和虚拟键盘冲突的问题" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">移动端之fixed定位和虚拟键盘冲突的问题</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/移动端/">移动端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2018/02/08/移动端之fixed定位和虚拟键盘冲突的问题/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。</p>
+</blockquote>
+<p>之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。</p>
+<p>做手机页面时，对于顶部和底部样式的处理，我们会经常使用到<code>display:absolute</code>或者<code>display:fixed</code>来做定位处理，比如</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">class</span>=<span class="value">"layout-scroll-fixed"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- fixed定位的头部 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">header</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="title">header</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 可以滚动的区域 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">main</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 内容在这里... --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">main</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- fixed定位的底部 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">placeholder</span>=<span class="value">"Footer..."</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但是当页面中出现输入框需要唤起手机中的软键盘输入文字是，这些定位元素就会出现错乱排列问题。</p>
+<p><img src="http://efe.baidu.com/blog/mobile-fixed-layout/img/fixed_bug_0.png" alt="图片"></p>
+<p><strong>ios下fixed失效原因</strong></p>
+<blockquote>
+<p>软键盘唤起后，页面的 fixed 元素将失效（ios认为用户更希望的是元素随着滚动而移动，也就是变成了 absolute 定位），既然变成了absolute，所以当页面超过一屏且滚动时，失效的 fixed 元素就会跟随滚动了。</p>
+</blockquote>
+<p><strong>解决方案</strong></p>
+<p>使用绝对定位和容器内部滚动条来实现固定定位的效果。</p>
+<p>即不让页面滚动，将固定定位的部分和其他部分区分开各自内部滚动。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">main</span> <span class="rules">&#123;</span><br><span class="line">    <span class="comment">/* main绝对定位，进行内部滚动 */</span></span><br><span class="line">    <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute</span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">50px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">bottom</span>:<span class="value"> <span class="number">34px</span></span></span>;</span><br><span class="line">    <span class="comment">/* 使之可以滚动 */</span></span><br><span class="line">    <span class="rule"><span class="attribute">overflow-y</span>:<span class="value"> scroll</span></span>;</span><br><span class="line">    <span class="comment">/* 增加该属性，可以增加弹性 */</span></span><br><span class="line">    <span class="rule"><span class="attribute">-webkit-overflow-scrolling</span>:<span class="value"> touch</span></span>;</span><br><span class="line">&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>另外一种解决方案</strong></p>
+<p>即软键盘弹出时监测页面的窗口一旦变化就切换定位方式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oHeight = $(<span class="built_in">document</span>).height(); <span class="comment">//浏览器当前的高度</span></span><br><span class="line">   $(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>($(<span class="built_in">document</span>).height() &lt; oHeight)&#123;</span><br><span class="line">         $(<span class="string">"#footer"</span>).css(<span class="string">"position"</span>,<span class="string">"static"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         $(<span class="string">"#footer"</span>).css(<span class="string">"position"</span>,<span class="string">"absolute"</span>);</span><br><span class="line">   　 &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+<p>这个方案使用后项目的测试组都正常，但是用户反馈回来一个oppo手机还是有问题==！</p>
+<p>后来专门找来一个oppo手机发现事实上它很多时候读取的window值为<code>0</code></p>
+<p>因为这个时候我也没oppo手机所以没有做过多测试，但是猜测我们可以利用</p>
+<p><code>navigator.userAgent</code>检测手机型号针对性做更多的事情，或者除了window的改变，我们可以尝试监测更多的<code>window.innerHeight</code>的变化做判断……</p>
+<p><strong>阅读</strong></p>
+<blockquote>
+<p><a href="https://juejin.im/post/59e725865188257e0c3246bf" target="_blank" rel="external">移动端踩坑之旅-ios下fixed、软键盘相关问题总结</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/26141351" target="_blank" rel="external">移动端 Web 开发踩坑之旅</a></p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/02/07/移动端之Flexbox布局/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/02/08/移动端之reset/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/02/08/移动端之fixed定位和虚拟键盘冲突的问题/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript之屏幕/浏览器/页面高度 | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="javascript," />
+  
+
+  <meta name="description" content="项目中经常会读取屏幕文档内容里的一下高度宽度值，检测他们的变化，这里有很多种高度容易混淆认识，这里总结一下他们的取值和区别。
+js常用高度/宽度取值web环境中对于页面高度取值，有屏幕、浏览器、页面的区分。
+一个页面从外到内的容器为：
+屏幕》浏览器》页面本身 
+
+屏幕信息-屏幕尺寸信息,它是固定的并不会随着窗口的大小的变化而改变。
+
+screen.height-屏幕高度；
+screen.avail">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript之屏幕/浏览器/页面高度">
+<meta property="og:url" content="http://yoursite.com/2018/02/11/javascript之屏幕浏览器页面高度/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="项目中经常会读取屏幕文档内容里的一下高度宽度值，检测他们的变化，这里有很多种高度容易混淆认识，这里总结一下他们的取值和区别。
+js常用高度/宽度取值web环境中对于页面高度取值，有屏幕、浏览器、页面的区分。
+一个页面从外到内的容器为：
+屏幕》浏览器》页面本身 
+
+屏幕信息-屏幕尺寸信息,它是固定的并不会随着窗口的大小的变化而改变。
+
+screen.height-屏幕高度；
+screen.avail">
+<meta property="og:image" content="http://harttle.land/assets/img/blog/css/height.png">
+<meta property="og:updated_time" content="2018-02-11T08:40:38.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript之屏幕/浏览器/页面高度">
+<meta name="twitter:description" content="项目中经常会读取屏幕文档内容里的一下高度宽度值，检测他们的变化，这里有很多种高度容易混淆认识，这里总结一下他们的取值和区别。
+js常用高度/宽度取值web环境中对于页面高度取值，有屏幕、浏览器、页面的区分。
+一个页面从外到内的容器为：
+屏幕》浏览器》页面本身 
+
+屏幕信息-屏幕尺寸信息,它是固定的并不会随着窗口的大小的变化而改变。
+
+screen.height-屏幕高度；
+screen.avail">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#js_u5E38_u7528_u9AD8_u5EA6/_u5BBD_u5EA6_u53D6_u503C"><span class="toc-text">js常用高度/宽度取值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery_u5E38_u7528_u9AD8_u5EA6/_u5BBD_u5EA6_u53D6_u503C"><span class="toc-text">jQuery常用高度/宽度取值</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-javascript之屏幕浏览器页面高度" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">javascript之屏幕/浏览器/页面高度</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.02.11</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/js相关/">js相关</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2018/02/11/javascript之屏幕浏览器页面高度/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <p>项目中经常会读取屏幕文档内容里的一下高度宽度值，检测他们的变化，这里有很多种高度容易混淆认识，这里总结一下他们的取值和区别。</p>
+<h2 id="js_u5E38_u7528_u9AD8_u5EA6/_u5BBD_u5EA6_u53D6_u503C"><a href="#js_u5E38_u7528_u9AD8_u5EA6/_u5BBD_u5EA6_u53D6_u503C" class="headerlink" title="js常用高度/宽度取值"></a>js常用高度/宽度取值</h2><p>web环境中对于页面高度取值，有屏幕、浏览器、页面的区分。</p>
+<p>一个页面从外到内的容器为：</p>
+<p><strong>屏幕》浏览器》页面本身 </strong></p>
+<ul>
+<li><strong>屏幕信息</strong>-屏幕尺寸信息,它是固定的并不会随着窗口的大小的变化而改变。</li>
+</ul>
+<p><code>screen.height</code>-屏幕高度；</p>
+<p><code>screen.availHeight</code>-屏幕可用个高度，及拼命高度减去上下任务栏后的高度；</p>
+<blockquote>
+<p>screen.width、screen.availWidth</p>
+</blockquote>
+<ul>
+<li><strong>浏览器信息</strong>-浏览器尺寸信息；如浏览器、内部页面及工具栏的高度和宽度。</li>
+</ul>
+<p><code>window.outerHeight</code>-浏览器高度；</p>
+<p><code>window.innerHeight</code>-浏览器内页面可用高度，此高度包含水平滚动条高度（如存在），可表示浏览器当前高度去除浏览器边框、工具条后的高度。</p>
+<blockquote>
+<p>window.outerWidth、window.innerWidth;</p>
+</blockquote>
+<p><code>window.outerHeight-window.innerHeight</code>工具栏（地址栏、书签栏、浏览器边框等）高度；</p>
+<ul>
+<li><strong>页面信息</strong>-介绍HTML页面尺寸信息；如body总的、展示的高度和宽度。</li>
+</ul>
+<p><code>document.body.clientHeight</code>-body展示高度，表示body在浏览器内显示的区域高度；</p>
+<p><code>document.body.offsetHeight</code>-body总高度；</p>
+<blockquote>
+<p>document.body.clientWidth 、document.body.offsetWidth</p>
+</blockquote>
+<p><strong>获取窗口大小时我们可以写的兼容性写法</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> height=<span class="built_in">window</span>.innerHeight || <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight;</span><br></pre></td></tr></table></figure>
+<p><code>document.Element</code>是文档根元素即<code>html</code></p>
+<ul>
+<li><strong>滚动信息</strong></li>
+</ul>
+<p><img src="http://harttle.land/assets/img/blog/css/height.png" alt="*"></p>
+<p><code>clientHeight</code>-内部可视区大小；</p>
+<p><code>offsetHeight</code>-包括border和滚动条的可视区大小；</p>
+<p><code>scrollHeight</code>-元素内容高度，包括溢出高度；</p>
+<p><code>scrollTop</code>-元素内容上滚动多少像素；</p>
+<blockquote>
+<p>clientWidth、offsetWidth、scrollWidth、scrollLeft</p>
+</blockquote>
+<p><code>offsetTop</code>距离上方或者上层控件的位置；</p>
+<h2 id="jQuery_u5E38_u7528_u9AD8_u5EA6/_u5BBD_u5EA6_u53D6_u503C"><a href="#jQuery_u5E38_u7528_u9AD8_u5EA6/_u5BBD_u5EA6_u53D6_u503C" class="headerlink" title="jQuery常用高度/宽度取值"></a>jQuery常用高度/宽度取值</h2><ul>
+<li>$(window).height(); //浏览器当下窗口可视区域高度</li>
+<li>$(document).height(); //浏览器当下窗口文档的高度</li>
+<li>$(document.body).height();//浏览器当下窗口文档body的高度</li>
+<li>$(document.body).outerHeight(true);//浏览器当下窗口文档body的总高度 包括border padding margin</li>
+<li>$(window).width(); //浏览器当下窗口可视区域宽度</li>
+<li>$(document).width();//浏览器当下窗口文档对象宽度</li>
+<li>$(document.body).width();//浏览器当下窗口文档body的高度</li>
+<li>$(document.body).outerWidth(true);//浏览器当下窗口文档body的总宽度 包括border padding margin</li>
+<li>$(document).scrollTop(); //获取滚动条到顶部的垂直高度</li>
+<li>$(document).scrollLeft(); //获取滚动条到左边的宽度</li>
+</ul>
+<p><strong>参考</strong></p>
+<blockquote>
+<p><a href="http://www.cnblogs.com/polk6/p/5051935.html" target="_blank" rel="external">HTML 获取屏幕、浏览器、页面的高度宽度</a></p>
+<p><a href="http://harttle.land/2016/04/24/client-height-width.html" target="_blank" rel="external">视口的宽高与滚动高度</a></p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018/02/08/移动端之reset/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/02/11/移动端之细节总结/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/02/11/javascript之屏幕浏览器页面高度/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
