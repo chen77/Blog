@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动端之Flexbox布局 | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="flex," />
+  
+
+  <meta name="description" content="移动端布局早有接触，真的是一个很方便的一个布局方式，但前几次的使用中兼容性问题用得不是很愉快，但自动构建工具里的前缀补全插件勉强又给了我一些信心。
+备忘一下常用语法，方便查询。
+
+Flex布局是什么？Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+任何容器都可以指定为Flex布局。
+设为Flex布局以后，子元素的float、clear、verti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端之Flexbox布局">
+<meta property="og:url" content="http://yoursite.com/2017/07/07/移动端之Flexbox布局/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="移动端布局早有接触，真的是一个很方便的一个布局方式，但前几次的使用中兼容性问题用得不是很愉快，但自动构建工具里的前缀补全插件勉强又给了我一些信心。
+备忘一下常用语法，方便查询。
+
+Flex布局是什么？Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+任何容器都可以指定为Flex布局。
+设为Flex布局以后，子元素的float、clear、verti">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png">
+<meta property="og:updated_time" content="2018-03-13T09:09:30.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端之Flexbox布局">
+<meta name="twitter:description" content="移动端布局早有接触，真的是一个很方便的一个布局方式，但前几次的使用中兼容性问题用得不是很愉快，但自动构建工具里的前缀补全插件勉强又给了我一些信心。
+备忘一下常用语法，方便查询。
+
+Flex布局是什么？Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。
+任何容器都可以指定为Flex布局。
+设为Flex布局以后，子元素的float、clear、verti">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex_u5E03_u5C40_u662F_u4EC0_u4E48_uFF1F"><span class="toc-text">Flex布局是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5BB9_u5668_u5C5E_u6027_uFF08_u88ABflex_u7684_u5143_u7D20_u5C5E_u6027_uFF09"><span class="toc-text">容器属性（被flex的元素属性）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u9879_u76EE_u5C5E_u6027_uFF08flex_u5BB9_u5668_u4E2D_u5B50_u5143_u7D20_u5C5E_u6027_uFF09"><span class="toc-text">项目属性（flex容器中子元素属性）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex_u5E03_u5C40_u7684_u517C_u5BB9_u6027"><span class="toc-text">flex布局的兼容性</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-移动端之Flexbox布局" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">移动端之Flexbox布局</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.07.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/移动端/">移动端</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2017/07/07/移动端之Flexbox布局/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>移动端布局早有接触，真的是一个很方便的一个布局方式，但前几次的使用中兼容性问题用得不是很愉快，但自动构建工具里的前缀补全插件勉强又给了我一些信心。</p>
+<p>备忘一下常用语法，方便查询。</p>
+</blockquote>
+<h2 id="Flex_u5E03_u5C40_u662F_u4EC0_u4E48_uFF1F"><a href="#Flex_u5E03_u5C40_u662F_u4EC0_u4E48_uFF1F" class="headerlink" title="Flex布局是什么？"></a>Flex布局是什么？</h2><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<p>任何容器都可以指定为Flex布局。</p>
+<p><strong>设为Flex布局以后，子元素的<code>float</code>、<code>clear</code>、<code>vertical-align</code>属性将失效。</strong></p>
+<p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称<strong>“容器”</strong>。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称<strong> “项目”</strong>。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt=""></p>
+<p><em>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</em></p>
+<h2 id="u5BB9_u5668_u5C5E_u6027_uFF08_u88ABflex_u7684_u5143_u7D20_u5C5E_u6027_uFF09"><a href="#u5BB9_u5668_u5C5E_u6027_uFF08_u88ABflex_u7684_u5143_u7D20_u5C5E_u6027_uFF09" class="headerlink" title="容器属性（被flex的元素属性）"></a>容器属性（被flex的元素属性）</h2><ul>
+<li>flex-direction  | 排列方向</li>
+<li>flex-wrap | 是否换行</li>
+<li>flex-flow | 以上简写</li>
+<li>justify-content | 水平对齐方式</li>
+<li>align-items | 垂直对齐方式</li>
+<li>align-content | 多轴对齐方式</li>
+</ul>
+<p><code>flex-direction</code>决定项目排列方向</p>
+<ul>
+<li>row（默认值）| row-reverse | column |column-reverse</li>
+</ul>
+<p><code>flex-wrap</code></p>
+<ul>
+<li>nowrap(默认) | wrap | wrap-reverse</li>
+</ul>
+<p><code>flex-flow</code></p>
+<ul>
+<li>row nowrap（默认值）</li>
+<li>是<em>flex-direction</em>和<em>flex-wrap</em>的简写形式，</li>
+</ul>
+<p><code>justify-content</code>定义项目在主轴上的对齐方式。</p>
+<ul>
+<li>flex-start｜flext-end｜center｜space-between｜space-around</li>
+</ul>
+<p><code>align-items</code>定义项目在交叉轴（垂直方向）如何对齐。</p>
+<ul>
+<li>flex-start｜flex-end｜center｜baseline｜stretch</li>
+</ul>
+<p><code>align-content</code>定义多根轴线对齐方式，如果项目只有一条轴线该属性不起作用；</p>
+<ul>
+<li>flex-start｜flex-end｜center｜space-between｜space-around｜stretch</li>
+</ul>
+<h2 id="u9879_u76EE_u5C5E_u6027_uFF08flex_u5BB9_u5668_u4E2D_u5B50_u5143_u7D20_u5C5E_u6027_uFF09"><a href="#u9879_u76EE_u5C5E_u6027_uFF08flex_u5BB9_u5668_u4E2D_u5B50_u5143_u7D20_u5C5E_u6027_uFF09" class="headerlink" title="项目属性（flex容器中子元素属性）"></a>项目属性（flex容器中子元素属性）</h2><ul>
+<li>order</li>
+<li>flex-grow</li>
+<li>flex-shrink</li>
+<li>flex-basis</li>
+<li>flex<code>推荐</code></li>
+<li>align-self</li>
+</ul>
+<p><code>order</code>定义项目的排列顺序，数值越小排列越靠前，默认0；</p>
+<p><code>flex-grow</code>定义项目的放大比例，默认0，如果有剩余空间也不放大；</p>
+<p>如果所有属性都为1，则他们将等分剩余空间；</p>
+<p><code>flex-shrink</code>定义项目的缩小比例，默认1，如果空间不足，该项目将缩小；</p>
+<p>如果所有属性都为1，当空间不足时，都将等比例缩小；</p>
+<p><code>flex-basis</code>定义再分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间，默认auto，类似width和height属性；</p>
+<p><code>flex</code></p>
+<ul>
+<li>是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。</li>
+<li>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>);</li>
+</ul>
+<p><code>align-self</code></p>
+<ul>
+<li>auto | flex-start | flex-end | center | baseline | stretch;</li>
+<li>属性允许单个项目有与其他项目不一样的对齐方</li>
+<li>可覆盖<code>align-items</code>属性;</li>
+<li>默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>;</li>
+</ul>
+<p><strong>以上主要来源 <a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html?utm_source=tuicool" target="_blank" rel="external">Flex 布局教程：语法篇</a></strong></p>
+<h2 id="flex_u5E03_u5C40_u7684_u517C_u5BB9_u6027"><a href="#flex_u5E03_u5C40_u7684_u517C_u5BB9_u6027" class="headerlink" title="flex布局的兼容性"></a>flex布局的兼容性</h2><p><a href="https://caniuse.com/#search=flexbox" target="_blank" rel="external">查看flexbox的兼容性</a>可以看到在低版本系统中兼容性并不好，这里需要做一定的兼容性处理才能正常使用。</p>
+<ul>
+<li>IE10部分支持flex，需要-ms-前缀</li>
+<li>Android4.1/4.2-4.3部分支持flex，需要旧版flex-box兼容写法，需要-webkit-前缀</li>
+<li>Safari7/7.1/8部分支持flex，需要-webkit-前缀</li>
+<li>IOS Safari7.0-7.1/8.1-8.3部分支持flex，需要-webkit-前缀</li>
+</ul>
+<p>推荐使用<code>gulp-autoprefixer</code></p>
+<p><a href="http://www.ydcss.com/archives/94" target="_blank" rel="external">我的配置文件</a>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'autofx'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">gulp.src(<span class="string">'app/css/**/*.css'</span>)</span><br><span class="line">	.pipe(autoprefixer(&#123;</span><br><span class="line">		browsers:[<span class="string">'&gt;0.5%'</span>,<span class="string">'Android&gt;=2.3'</span>],<span class="comment">//兼容到什么版本的浏览器</span></span><br><span class="line">		cascade:<span class="literal">true</span>,<span class="comment">//是否美化属性值</span></span><br><span class="line">	&#125;))</span><br><span class="line">	.pipe(gulp.dest(<span class="string">'app/css'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>参考</strong></p>
+<blockquote>
+<p> <a href="http://www.ayqy.net/blog/flexbox%E5%B8%83%E5%B1%80%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/" target="_blank" rel="external">flexbox布局的兼容性</a></p>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/01/19/Gulp任务自动管理工具的基本使用/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/08/20/关于实现垂直居中方法总结/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2017/07/07/移动端之Flexbox布局/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>git版本控制工具基本使用 | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="git," />
+  
+
+  <meta name="description" content="安装1git --version //&amp;#26597;&amp;#30475;git&amp;#30340;&amp;#29256;&amp;#26412;&amp;#21495;&amp;#21028;&amp;#26029;&amp;#26159;&amp;#21542;&amp;#23433;&amp;#35013;&amp;#25104;&amp;#21151;
+创建仓库的两种方式本地创建
+
+在本地创建一个装项目的文件夹，在当前文件夹里初始化
+
+1git init
+
+直接在命令行里完成项目文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git版本控制工具基本使用">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/git版本控制工具基本使用/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="安装1git --version //&amp;#26597;&amp;#30475;git&amp;#30340;&amp;#29256;&amp;#26412;&amp;#21495;&amp;#21028;&amp;#26029;&amp;#26159;&amp;#21542;&amp;#23433;&amp;#35013;&amp;#25104;&amp;#21151;
+创建仓库的两种方式本地创建
+
+在本地创建一个装项目的文件夹，在当前文件夹里初始化
+
+1git init
+
+直接在命令行里完成项目文">
+<meta property="og:updated_time" content="2018-03-13T09:10:36.345Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git版本控制工具基本使用">
+<meta name="twitter:description" content="安装1git --version //&amp;#26597;&amp;#30475;git&amp;#30340;&amp;#29256;&amp;#26412;&amp;#21495;&amp;#21028;&amp;#26029;&amp;#26159;&amp;#21542;&amp;#23433;&amp;#35013;&amp;#25104;&amp;#21151;
+创建仓库的两种方式本地创建
+
+在本地创建一个装项目的文件夹，在当前文件夹里初始化
+
+1git init
+
+直接在命令行里完成项目文">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u5B89_u88C5"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u521B_u5EFA_u4ED3_u5E93_u7684_u4E24_u79CD_u65B9_u5F0F"><span class="toc-text">创建仓库的两种方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u57FA_u672C_u7528_u6CD5"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u5206_u652F"><span class="toc-text">分支</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u8FDC_u7A0B_u64CD_u4F5C"><span class="toc-text">远程操作</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-git版本控制工具基本使用" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">git版本控制工具基本使用</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.12.06</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2016/12/06/git版本控制工具基本使用/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version //&#26597;&#30475;git&#30340;&#29256;&#26412;&#21495;&#21028;&#26029;&#26159;&#21542;&#23433;&#35013;&#25104;&#21151;</span><br></pre></td></tr></table></figure>
+<h2 id="u521B_u5EFA_u4ED3_u5E93_u7684_u4E24_u79CD_u65B9_u5F0F"><a href="#u521B_u5EFA_u4ED3_u5E93_u7684_u4E24_u79CD_u65B9_u5F0F" class="headerlink" title="创建仓库的两种方式"></a>创建仓库的两种方式</h2><p><strong>本地创建</strong></p>
+<ul>
+<li>在本地创建一个装项目的文件夹，在当前文件夹里初始化</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<ul>
+<li>直接在命令行里完成项目文件的创建初始化</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init demo</span><br></pre></td></tr></table></figure>
+<p><strong>远程拉取</strong></p>
+<ul>
+<li>将github上已有的仓库down下来克隆项目</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:yanhaijing/zepto.fullpage.git</span><br></pre></td></tr></table></figure>
+<h2 id="u57FA_u672C_u7528_u6CD5"><a href="#u57FA_u672C_u7528_u6CD5" class="headerlink" title="基本用法"></a>基本用法</h2><p>查看配置名字和邮箱</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config user.name&#10;&#10;git config user.email</span><br></pre></td></tr></table></figure>
+<p>修改配置名字和邮箱</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &#34;Your_Username&#34;&#10;&#10;git config --global user.email username@xxx.com</span><br></pre></td></tr></table></figure>
+<p>在命令行里创建一个文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch demo.txt</span><br></pre></td></tr></table></figure>
+<p><code>git status</code>查看仓库状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line"><span class="comment">//将当前目录所有的更改都添加到暂存区</span></span><br><span class="line">git commit -m <span class="string">"更改提交的描述说明"</span></span><br></pre></td></tr></table></figure>
+<p><code>git log</code>查看当前分支版本记录；</p>
+<p><code>git log -p</code>查看具体修改了什么内容；</p>
+<p><code>git log --online</code>简洁显示版本记录；</p>
+<p><code>git log --online --all</code>把所有的节点分支都打印出来包括分支上的</p>
+<p><code>git log --all --graph</code>图示化历史记录</p>
+<p><code>git checkout XXX</code>创越到指定的历史节点；</p>
+<p><code>git checkout -</code>回到之前的节点版本；</p>
+<p>git的三种状态：</p>
+<ul>
+<li>modified</li>
+<li>staged</li>
+<li>committed</li>
+</ul>
+<p><code>git tag -a 标签名 -m &#39;备注&#39;</code>附注标签（a/annotated有注释的）</p>
+<p><code>git tag</code>列出所有标签</p>
+<p><code>git show 标签名</code>查看某个标签的详细信息</p>
+<p><code>git checkout 标签名</code>回溯至标签所在的提交</p>
+<h2 id="u5206_u652F"><a href="#u5206_u652F" class="headerlink" title="分支"></a>分支</h2><p>仓库初始化时默认分支master</p>
+<p><strong>创建分支</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch 分支名 <span class="comment">//创建分支</span></span><br><span class="line">git checkout 分支名 <span class="comment">//切换分支</span></span><br><span class="line"></span><br><span class="line">git checkout -b 分支名 <span class="comment">//创建并切换至分支</span></span><br></pre></td></tr></table></figure>
+<p><strong>合并分支</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支名 <span class="comment">//合并分支</span></span><br></pre></td></tr></table></figure>
+<h2 id="u8FDC_u7A0B_u64CD_u4F5C"><a href="#u8FDC_u7A0B_u64CD_u4F5C" class="headerlink" title="远程操作"></a>远程操作</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git remote add 远程名称 远程地址 <span class="comment">//添加远程仓库</span></span><br><span class="line">git remote <span class="comment">//列出所有的远程仓库</span></span><br><span class="line">git remote -v <span class="comment">//查看远程仓库的详细信息</span></span><br><span class="line">git push -u 远程名 分支名<span class="comment">//上传代码</span></span><br><span class="line">git clone 仓库地址<span class="comment">//克隆（拷贝）仓库</span></span><br><span class="line"></span><br><span class="line">git pull<span class="comment">//获取远程更新</span></span><br></pre></td></tr></table></figure>
+<p><code>git remote remove &lt;name&gt;</code>删除某个remote配置</p>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2016/07/14/github项目本地远程同步并使用Github Pages服务/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017/01/19/Gulp任务自动管理工具的基本使用/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2016/12/06/git版本控制工具基本使用/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

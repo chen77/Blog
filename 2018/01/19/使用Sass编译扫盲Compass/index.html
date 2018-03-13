@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用Sass编译扫盲Compass | 小其记</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="compass,gulp,sass," />
+  
+
+  <meta name="description" content="Sass是什么？
+SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理开发工具，提供了很多便利和简单的语法，让css看起来更像是一门语言，这种特性也被称为“css预编译”。
+
+Sass只是css预编译工具中的一种，类似的工具还有Less/stylus等。
+Sass安装及其使用安装
+SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Sass编译扫盲Compass">
+<meta property="og:url" content="http://yoursite.com/2018/01/19/使用Sass编译扫盲Compass/index.html">
+<meta property="og:site_name" content="小其记">
+<meta property="og:description" content="Sass是什么？
+SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理开发工具，提供了很多便利和简单的语法，让css看起来更像是一门语言，这种特性也被称为“css预编译”。
+
+Sass只是css预编译工具中的一种，类似的工具还有Less/stylus等。
+Sass安装及其使用安装
+SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
+<meta property="og:updated_time" content="2018-03-13T09:14:48.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Sass编译扫盲Compass">
+<meta name="twitter:description" content="Sass是什么？
+SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理开发工具，提供了很多便利和简单的语法，让css看起来更像是一门语言，这种特性也被称为“css预编译”。
+
+Sass只是css预编译工具中的一种，类似的工具还有Less/stylus等。
+Sass安装及其使用安装
+SASS是Ruby语言写得，所以必须先安装Ruby，然后再安装S">
+
+  
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css" type="text/css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+  
+  <script type="text/javascript">
+	(function(){
+	    var bp = document.createElement('script');
+	    var curProtocol = window.location.protocol.split(':')[0];
+	    if (curProtocol === 'https') {
+	        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+	    }
+	    else {
+	        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+	    }
+	    var s = document.getElementsByTagName("script")[0];
+	    s.parentNode.insertBefore(bp, s);
+	})();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">更多</span>
+  
+
+  <div class="post-header LEFT">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">更多</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u662F_u4EC0_u4E48_uFF1F"><span class="toc-text">Sass是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u5B89_u88C5_u53CA_u5176_u4F7F_u7528"><span class="toc-text">Sass安装及其使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass_u8BED_u6CD5"><span class="toc-text">Sass语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4EC0_u4E48_u662FCompass_uFF1F"><span class="toc-text">什么是Compass？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u603B_u7ED3"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u53C2_u8003"><span class="toc-text">参考</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post LEFT">
+   <article id="post-使用Sass编译扫盲Compass" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">使用Sass编译扫盲Compass</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.01.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>chen7</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/工具/">工具</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="https://chen77.github.io/2018/01/19/使用Sass编译扫盲Compass/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h2 id="Sass_u662F_u4EC0_u4E48_uFF1F"><a href="#Sass_u662F_u4EC0_u4E48_uFF1F" class="headerlink" title="Sass是什么？"></a>Sass是什么？</h2><blockquote>
+<p>SASS是Syntactically Awesome StyleSheets的缩写，它是css的一个预处理开发工具，提供了很多便利和简单的语法，让css看起来更像是一门语言，这种特性也被称为“css预编译”。</p>
+</blockquote>
+<p><a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html" target="_blank" rel="external">Sass</a>只是css预编译工具中的一种，类似的工具还有Less/stylus等。</p>
+<h2 id="Sass_u5B89_u88C5_u53CA_u5176_u4F7F_u7528"><a href="#Sass_u5B89_u88C5_u53CA_u5176_u4F7F_u7528" class="headerlink" title="Sass安装及其使用"></a>Sass安装及其使用</h2><p><strong>安装</strong></p>
+<p>SASS是Ruby语言写得，所以必须先<a href="http://www.ruby-lang.org/zh_cn/downloads/" target="_blank" rel="external">安装Ruby</a>，然后再安装Sass：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install sass</span><br></pre></td></tr></table></figure>
+<p>检查是否安装成功可输入<code>ruby -v</code> <code>sass -v</code> 查看版本号。</p>
+<p><strong>使用</strong></p>
+<p><strong>1.利用sass本身进行编译</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass test.scss</span><br></pre></td></tr></table></figure>
+<p>将test.scss文件转为css语句显示在屏幕上（一般不用此操作）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass test.scss test.css</span><br></pre></td></tr></table></figure>
+<p>将test.scss文件编译为test.css文件放在当前目录下（也可将编译的css文件单独放一个文件）</p>
+<p>sass提供四个编译选项</p>
+<blockquote>
+<ul>
+<li>nested：产套缩进的css代码，默认值；</li>
+<li>expanded：没有缩进的/扩展的css代码；</li>
+<li>compact：简介格式的css代码；</li>
+<li>compressed：压缩后的css代码；</li>
+</ul>
+</blockquote>
+<p>生产环境中，一般使用压缩后的css代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass --style compressed test.scss test.css</span><br></pre></td></tr></table></figure>
+<p>我们更喜欢用SASS监听文件或目录进行自动编译：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//watch a file&#30417;&#21548;&#21333;&#20010;&#25991;&#20214;&#25913;&#21160;&#10;sass --watch test.scss:test.css&#10;&#10;//watch a directory&#30417;&#21548;&#25991;&#20214;&#22841;&#21464;&#21160;&#10;sass --watch sass&#25991;&#20214;&#22841;&#21517;:css&#25991;&#20214;&#22841;&#21517;</span><br></pre></td></tr></table></figure>
+<p>在样式表分布比较多的情况下更喜欢监听文件夹下目录的变动进行自动编译。</p>
+<p><strong>2.配合gulp-sass进行自动编译</strong></p>
+<p>前面我们已经学习过<a href="http://chen77.github.io/2018/01/19/Gulp%E4%BB%BB%E5%8A%A1%E8%87%AA%E5%8A%A8%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">Gulp任务自动管理</a>这里便可使用其gulp-sass插件监听文件的变动进行自动化编译。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//gulpfile.js</span></span><br><span class="line"><span class="keyword">var</span> sass = <span class="built_in">require</span>(<span class="string">'gulp-sass'</span>);</span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line">gulp.task(<span class="string">'sass'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> gulp.src(<span class="string">'app/scss/**/*.scss'</span>)</span><br><span class="line">    .pipe(sass(&#123;outputStyle: <span class="string">'expanded'</span>&#125;))</span><br><span class="line">    .pipe(gulp.dest(<span class="string">'app/css'</span>));</span><br><span class="line">&#125;)</span><br><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'sass'</span>]);</span><br></pre></td></tr></table></figure>
+<h2 id="Sass_u8BED_u6CD5"><a href="#Sass_u8BED_u6CD5" class="headerlink" title="Sass语法"></a>Sass语法</h2><blockquote>
+<ul>
+<li>变量</li>
+<li>嵌套/层叠</li>
+<li>计算</li>
+<li>继承</li>
+<li>混合器Mixin</li>
+<li>导入文件</li>
+<li>函数</li>
+<li>条件判断及循环</li>
+</ul>
+</blockquote>
+<p><strong>变量</strong></p>
+<p><code>sass</code>使用<code>$</code>符号来标识变量</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hight-color</span><span class="value">:<span class="hexcolor">#f00</span>;</span></span><br><span class="line"><span class="class">.nav</span>&#123;</span><br><span class="line">  <span class="variable">$width</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">  <span class="attribute">color</span><span class="value">:<span class="variable">$hight-color</span>;</span></span><br><span class="line">  <span class="attribute">width</span><span class="value">:<span class="variable">$width</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="class">.nav</span>&#123;</span><br><span class="line">  <span class="attribute">color</span><span class="value">:<span class="hexcolor">#f00</span>;</span></span><br><span class="line">  <span class="attribute">width</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>变量可以在css规则块之外存在，当变量定义在css规则块内，该变量只能再此规则块内使用。规则块内的变量和规则块之外的变量是相互独立各不影像的。</p>
+<p><strong>嵌套</strong></p>
+<p>Sass允许选择器及属性进行嵌套，我们一般用得较多的是选择器嵌套，</p>
+<p>在嵌套的代码块内，可以使用<code>&amp;</code>引用父元素。比如<code>a:hover</code>伪类</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$hight-color</span><span class="value">:<span class="hexcolor">#f00</span>;</span></span><br><span class="line"><span class="class">.nav</span>&#123;</span><br><span class="line">  <span class="attribute">background</span><span class="value">:<span class="variable">$hight-color</span>;</span></span><br><span class="line">  <span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">  <span class="class">.txt</span>&#123;</span><br><span class="line">    <span class="attribute">color</span><span class="value">:pink;</span></span><br><span class="line">    &amp;<span class="pseudo">:hover</span>&#123;</span><br><span class="line">			<span class="attribute">color</span><span class="value">: <span class="hexcolor">#ffb3ff</span>;</span></span><br><span class="line">		&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="class">.nav</span>&#123;</span><br><span class="line">  <span class="attribute">background</span><span class="value">:<span class="hexcolor">#f00</span>;</span></span><br><span class="line">  heigth<span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.nav</span> <span class="class">.txt</span>&#123;</span><br><span class="line">  <span class="attribute">color</span><span class="value">:pink;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.nav</span> <span class="class">.txt</span><span class="pseudo">:hover</span>&#123;</span><br><span class="line">  <span class="attribute">color</span><span class="value">: <span class="hexcolor">#ffb3ff</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>计算</strong></p>
+<p>Sass允许在代码中使用算术公式</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">body</span> &#123;</span><br><span class="line">　　　　<span class="attribute">margin</span><span class="value">: (<span class="number">14px</span>/<span class="number">2</span>);</span></span><br><span class="line">　　　　<span class="attribute">top</span><span class="value">: <span class="number">50px</span> + <span class="number">100px</span>;</span></span><br><span class="line">　　　　<span class="attribute">right</span><span class="value">: <span class="variable">$var</span> * <span class="number">10%</span>;</span></span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>继承</strong></p>
+<p>Sass允许一个选择器继承另一个选择器，使用选择器的继承，要使用关键词 <code>@extend</code>，后面紧跟需要继承的选择器。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.header</span>&#123;</span><br><span class="line">  <span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">  <span class="attribute">background</span><span class="value">:red;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class">.tip</span>&#123;</span><br><span class="line">  <span class="at_rule">@<span class="keyword">extend</span><span class="preprocessor"> .hader</span>;</span></span><br><span class="line">  <span class="attribute">font-size</span><span class="value">:<span class="number">12px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="class">.tip</span>&#123;</span><br><span class="line">  <span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">  <span class="attribute">background</span><span class="value">:red;</span></span><br><span class="line">  <span class="attribute">font-size</span><span class="value">:<span class="number">12px</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>混合器Mixin</strong></p>
+<p>Mixin有点像C语言的宏（macro），是可以重用的代码块。</p>
+<p>使用@mixin命令，定义一个代码块,使用@include命令，调用这个mixin。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> demo</span>&#123;</span></span><br><span class="line">  <span class="variable">$color</span><span class="value">:<span class="hexcolor">#f00</span>;</span></span><br><span class="line">  <span class="attribute">background</span><span class="value">:<span class="variable">$color</span>;</span></span><br><span class="line">  <span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">div</span>&#123;</span><br><span class="line">  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> demo</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">background</span><span class="value">:<span class="hexcolor">#f00</span>;</span></span><br><span class="line">  <span class="attribute">height</span><span class="value">:<span class="number">100px</span>;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以通过在<code>@include</code>混合器时给混合器传参，来定制混合器生成的精确样式。当<code>@include</code>混合器时，参数其实就是可以赋值给<code>css</code>属性值的变量。这种方式跟<code>JavaScript</code>的<code>function</code>很像：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> link-colors</span>(<span class="variable">$normal</span>, <span class="variable">$hover</span>, <span class="variable">$visited</span>) &#123;</span></span><br><span class="line">  <span class="attribute">color</span><span class="value">: <span class="variable">$normal</span>;</span></span><br><span class="line">  &amp;<span class="pseudo">:hover</span> &#123; <span class="attribute">color</span><span class="value">: <span class="variable">$hover</span>;</span> &#125;</span><br><span class="line">  &amp;<span class="pseudo">:visited</span> &#123; <span class="attribute">color</span><span class="value">: <span class="variable">$visited</span>;</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">a</span>&#123;</span><br><span class="line">  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> linkcolor</span>(blue,red,green);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后</span></span><br><span class="line"><span class="tag">a</span> &#123; <span class="attribute">color</span><span class="value">: blue;</span> &#125;</span><br><span class="line"><span class="tag">a</span><span class="pseudo">:hover</span> &#123; <span class="attribute">color</span><span class="value">: red;</span> &#125;</span><br><span class="line"><span class="tag">a</span><span class="pseudo">:visited</span> &#123; <span class="attribute">color</span><span class="value">: green;</span> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>导入文件</strong></p>
+<p><code>sass</code>的<code>@import</code>规则在生成<code>css</code>文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个<code>css</code>文件中，而无需发起额外的下载请求。另外，所有在被导入文件中定义的变量和混合器均可在导入文件中使用。</p>
+<p>那些专门为<code>@import</code>命令而编写的<code>sass</code>文件，并不需要生成对应的独立<code>css</code>文件，这样的<code>sass</code>文件称为局部文件。<code>sass</code>局部文件的文件名以下划线开头。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"_test.scss"</span>;</span></span><br></pre></td></tr></table></figure>
+<h2 id="u4EC0_u4E48_u662FCompass_uFF1F"><a href="#u4EC0_u4E48_u662FCompass_uFF1F" class="headerlink" title="什么是Compass？"></a>什么是Compass？</h2><p>Sass本身只是一个编译器（‘css预处理器‘），Compass在它的基础上，封装了一系列有用的模块和模板，补充Sass的功能。它们之间的关系，有点像Javascript和jQuery、Ruby和Rails、python和Django的关系。</p>
+<p><strong>安装</strong></p>
+<p>在已经安装好Ruby的前提下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$gem install compass</span><br></pre></td></tr></table></figure>
+<p><strong>项目初始化</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compass create project <span class="comment">//创建一个名为project的compass项目</span></span><br></pre></td></tr></table></figure>
+<p>里面会有<a href="https://segmentfault.com/a/1190000004998406#articleHeader3" target="_blank" rel="external">config.rb</a>配置文件，和两个子目录<code>sass</code>和<code>stylesheets</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compass create 项目名称 --sass-dir <span class="string">"sass"</span> --css-dir <span class="string">"css"</span> --javascript-dir <span class="string">"js"</span> --images-dir <span class="string">"img"</span><span class="comment">//创建定制化compass项目</span></span><br></pre></td></tr></table></figure>
+<p><strong>编译</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">compass compile <span class="comment">//一次性编译，将scss文件编译成css文件</span></span><br><span class="line">compass watch <span class="comment">//自动编译命令，只要scss文件发生变化就会自动编译成css</span></span><br></pre></td></tr></table></figure>
+<p><strong>Compass模块</strong></p>
+<p>Compass采用模块结构，不同模块提供不同的功能，目前内置有五个模块,</p>
+<p>具体可参考<a href="http://compass-style.org/reference/compass/" target="_blank" rel="external">官方文档</a></p>
+<blockquote>
+<ul>
+<li>reset   //重置浏览器默认样式</li>
+<li>css3  //提供css3命令</li>
+<li>layout  //提供布局功能</li>
+<li>typography  //提供板式功能</li>
+<li>utilities  //提供一些不属于其他模块的功能</li>
+</ul>
+</blockquote>
+<p>具体对模块的精简介绍可参考<a href="http://www.ruanyifeng.com/blog/2012/11/compass.html" target="_blank" rel="external">Compass用法指南</a></p>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>了解了相关的功能写法后发现Sass的编写方式让项目更模块化，减少重复性的录入。当然这些都需要建立在对项目整体有一定规划布局。</p>
+<p>可以预见的是大项目的使用上模块化可以让代码更加容易维护。但是在小的页面站点上用原生的css还是更方便直接的写法。</p>
+<p><strong>另外实践了compass的用法之后自我感觉比较不太懂它存在的意义，模块的引用并没有让我觉得更利于代码的管理书写，所以关于compass决定弃用。</strong></p>
+<h2 id="u53C2_u8003"><a href="#u53C2_u8003" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<ul>
+<li><a href="https://www.w3cplus.com/sassguide/index.html" target="_blank" rel="external">Sass教程</a></li>
+<li><a href="http://www.sasschina.com/guide/" target="_blank" rel="external">Sass 基础教程</a></li>
+<li><a href="https://w3ctrain.com/2016/08/18/why-am-i-use-sass/" target="_blank" rel="external">我为什么用Sass</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="external">SASS用法指南</a></li>
+</ul>
+</blockquote>
+
+    
+  </div>
+</article>
+
+
+   
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">感谢阅读</span>
+      <div class="donation-body">
+        <div class="tip text-center">公众号</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/vxin.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017/09/11/javascript之屏幕浏览器页面高度/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2018/01/26/text-alignjustify两端对齐/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://yoursite.com/2018/01/19/使用Sass编译扫盲Compass/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+    
+
+    
+	
+    
+	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
