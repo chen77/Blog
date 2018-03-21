@@ -17,27 +17,27 @@
 
   <meta name="description" content="最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。
 
-之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。
-做手机页面时，对于顶部和底部样式的处理，我们会经常使用到display:absolute或者display:fixed来做定位处理，比如
-12345678">
+被页面fixed定位虐了两轮，又来填坑( ⊙ o ⊙ )！
+根本性的解决原理就是把定位元素和滚动元素从文档流的角度上彻底分离，然乎滚动和固定元素互不影响
+之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="移动端之fixed定位和虚拟键盘冲突的问题">
 <meta property="og:url" content="http://yoursite.com/2018/02/08/移动端之fixed定位和虚拟键盘冲突的问题/index.html">
 <meta property="og:site_name" content="小其记">
 <meta property="og:description" content="最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。
 
-之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。
-做手机页面时，对于顶部和底部样式的处理，我们会经常使用到display:absolute或者display:fixed来做定位处理，比如
-12345678">
+被页面fixed定位虐了两轮，又来填坑( ⊙ o ⊙ )！
+根本性的解决原理就是把定位元素和滚动元素从文档流的角度上彻底分离，然乎滚动和固定元素互不影响
+之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。">
 <meta property="og:image" content="http://efe.baidu.com/blog/mobile-fixed-layout/img/fixed_bug_0.png">
-<meta property="og:updated_time" content="2018-02-11T09:50:38.564Z">
+<meta property="og:updated_time" content="2018-03-20T07:53:58.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端之fixed定位和虚拟键盘冲突的问题">
 <meta name="twitter:description" content="最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。
 
-之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。
-做手机页面时，对于顶部和底部样式的处理，我们会经常使用到display:absolute或者display:fixed来做定位处理，比如
-12345678">
+被页面fixed定位虐了两轮，又来填坑( ⊙ o ⊙ )！
+根本性的解决原理就是把定位元素和滚动元素从文档流的角度上彻底分离，然乎滚动和固定元素互不影响
+之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。">
 
   
 
@@ -225,6 +225,8 @@
       <blockquote>
 <p>最近在做的一个手机应用，fixed的大坑像是修水管一样，这里拧紧了那里松，想来是因为对解析原理的不理解，所以看了网上特别多的解决方案之后决定总结一下常见冲突情况的解决方式。</p>
 </blockquote>
+<p><code>被页面fixed定位虐了两轮，又来填坑( ⊙ o ⊙ )！</code></p>
+<p><code>根本性的解决原理就是把定位元素和滚动元素从文档流的角度上彻底分离，然乎滚动和固定元素互不影响</code></p>
 <p>之前并没有截图备份，这里的bug截图打算引用别人的图示说明问题即可。</p>
 <p>做手机页面时，对于顶部和底部样式的处理，我们会经常使用到<code>display:absolute</code>或者<code>display:fixed</code>来做定位处理，比如</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">body</span> <span class="attribute">class</span>=<span class="value">"layout-scroll-fixed"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- fixed定位的头部 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">header</span>&gt;</span></span><br><span class="line">        </span><br><span class="line">    <span class="tag">&lt;/<span class="title">header</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- 可以滚动的区域 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">main</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 内容在这里... --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">main</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!-- fixed定位的底部 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">placeholder</span>=<span class="value">"Footer..."</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">button</span> <span class="attribute">class</span>=<span class="value">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="title">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">footer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -249,6 +251,7 @@
 <blockquote>
 <p><a href="https://juejin.im/post/59e725865188257e0c3246bf" target="_blank" rel="external">移动端踩坑之旅-ios下fixed、软键盘相关问题总结</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/26141351" target="_blank" rel="external">移动端 Web 开发踩坑之旅</a></p>
+<p><a href="https://github.com/maxzhang/maxzhang.github.com/issues/2" target="_blank" rel="external">移动端web页面使用position:fixed问题总结</a></p>
 </blockquote>
 
     
@@ -276,7 +279,7 @@
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018/02/02/JavaScript之prototype和_proto_/">
+    <a class="show pull-left" href="/2018/02/02/Javascript之构造函数/">
         <i class="icon icon-angle-left"></i>
     </a>
     <a class="show pull-right" href="/2018/03/01/初识vue/">
